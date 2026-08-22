@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a1130;
+
+  --color-navy-950: #04060f;
+  --color-navy-900: #070c1e;
+  --color-navy-800: #0d1530;
+  --color-navy-700: #142145;
+  --color-navy-600: #1c2e5c;
+  --color-navy-500: #273f78;
+
+  --color-electric-600: #1245d6;
+  --color-electric-500: #2f63ff;
+  --color-electric-400: #5c85ff;
+  --color-electric-300: #93aeff;
+
+  --color-cyan-400: #1fc9dd;
+  --color-cyan-300: #5adbe9;
+  --color-cyan-200: #a7ecf3;
+
+  --color-mist-50: #f6fbfd;
+  --color-mist-100: #eaf6fa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-navy-950: var(--color-navy-950);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-700: var(--color-navy-700);
+  --color-navy-600: var(--color-navy-600);
+  --color-navy-500: var(--color-navy-500);
+
+  --color-electric-600: var(--color-electric-600);
+  --color-electric-500: var(--color-electric-500);
+  --color-electric-400: var(--color-electric-400);
+  --color-electric-300: var(--color-electric-300);
+
+  --color-cyan-400: var(--color-cyan-400);
+  --color-cyan-300: var(--color-cyan-300);
+  --color-cyan-200: var(--color-cyan-200);
+
+  --color-mist-50: var(--color-mist-50);
+  --color-mist-100: var(--color-mist-100);
+
+  --font-sans: var(--font-jakarta);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 3.2s ease-in-out infinite;
+  --animate-dash: dash 3.5s linear infinite;
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-led-blink: led-blink 2.4s ease-in-out infinite;
+  --animate-ripple: ripple 3s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+  --animate-radar-spin: radar-spin 6s linear infinite;
+  --animate-travel-down: travel-down 2.2s ease-in-out infinite;
+  --animate-icon-wobble: icon-wobble 3.4s ease-in-out infinite;
+}
+
+* {
+  border-color: #e2e8f0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), var(--font-bengali), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-electric-500);
+  color: white;
+}
+
+/* Scroll reveal primitive: elements start hidden/offset, then animate in
+   once the .is-visible class is toggled by an IntersectionObserver. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.glass {
+  background: color-mix(in srgb, white 78%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid color-mix(in srgb, #0a1130 8%, transparent);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-electric-600) 0%, var(--color-cyan-400) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, #0a1130 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, #0a1130 5%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* LED-style status blink, like a server rack indicator light. */
+@keyframes led-blink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px 1px currentColor; }
+  50% { opacity: 1; box-shadow: 0 0 6px 1px currentColor; }
+  92% { opacity: 0.25; box-shadow: none; }
+  96% { opacity: 0.25; box-shadow: none; }
+}
+
+/* Expanding ripple ring, e.g. radiating from a network hub. */
+@keyframes ripple {
+  0% { transform: scale(0.6); opacity: 0.55; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Slow rotating radar sweep beam. */
+@keyframes radar-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* A pulse of light travelling down a vertical connector, like fiber data. */
+@keyframes travel-down {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Gentle icon wobble, e.g. a scanning gauge needle or a listening headset. */
+@keyframes icon-wobble {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

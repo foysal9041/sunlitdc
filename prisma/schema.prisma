@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum Role {
+  ADMIN
+  NOC
+}
+
+enum PopStatus {
+  ACTIVE
+  DISABLED
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+}
+
+model PointOfPresence {
+  id          String    @id @default(cuid())
+  district    String
+  generalArea String
+  status      PopStatus @default(ACTIVE)
+
+  // Internal / sensitive fields — admin-only, never returned by the public API.
+  name                 String?
+  btrcPopId            String?
+  exactAddress         String?
+  latitude             Float?
+  longitude            Float?
+  nttnProvider         String?
+  linkId               String?
+  vlan                 String?
+  ipAddress            String?
+  oltInfo              String?
+  routerSwitchInfo     String?
+  internalCapacityMbps Int?
+  topologyNotes        String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([district])
+  @@index([status])
+}
