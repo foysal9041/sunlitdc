@@ -62,34 +62,32 @@ export function Navbar({ locale }: { locale: Locale }) {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
-          {navLinks.map((link, i) => {
+          {navLinks.map((link) => {
             const active = pathname === link.href;
             return (
-              <span key={link.href} className="flex items-center gap-1">
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200",
-                    active
-                      ? "text-navy-950 dark:text-white"
-                      : "text-slate-600 hover:text-navy-950 dark:text-slate-300 dark:hover:text-white"
-                  )}
-                >
-                  {link.label}
-                </Link>
-                {i === 0 && <LanguageSwitcher locale={locale} size="sm" />}
-              </span>
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200",
+                  active
+                    ? "text-navy-950 dark:text-white"
+                    : "text-slate-600 hover:text-navy-950 dark:text-slate-300 dark:hover:text-white"
+                )}
+              >
+                {link.label}
+              </Link>
             );
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <ThemeToggle />
-          <Button href={company.customerPortalUrl} target="_blank" rel="noopener noreferrer" variant="ghost" size="md">
+        <div className="hidden items-center gap-4 lg:flex">
+          <span className="flex items-center gap-2">
+            <LanguageSwitcher locale={locale} size="sm" />
+            <ThemeToggle />
+          </span>
+          <Button href={company.customerPortalUrl} target="_blank" rel="noopener noreferrer" variant="primary" size="md">
             {t.nav.customerLogin}
-          </Button>
-          <Button href="/internet" variant="primary" size="md">
-            {t.nav.getConnected}
           </Button>
         </div>
 
@@ -135,13 +133,10 @@ export function Navbar({ locale }: { locale: Locale }) {
                 href={company.customerPortalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="secondary"
+                variant="primary"
                 className="w-full justify-center"
               >
                 {t.nav.customerLogin}
-              </Button>
-              <Button href="/internet" variant="primary" className="w-full justify-center">
-                {t.nav.getConnected}
               </Button>
             </div>
           </div>

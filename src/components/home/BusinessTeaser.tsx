@@ -14,7 +14,7 @@ export function BusinessTeaser({ locale }: { locale: Locale }) {
 
   return (
     <section className="relative overflow-hidden bg-mist-50 dark:bg-navy-950 py-24">
-      <div className="pointer-events-none absolute right-0 top-0 h-[420px] w-[420px] rounded-full bg-cyan-200/40 blur-[130px]" />
+      <div className="pointer-events-none absolute right-0 top-0 h-[420px] w-[420px] rounded-full bg-cyan-200/22 blur-[130px]" />
       <Container className="relative grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
         <ScrollReveal>
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 dark:border-cyan-400/25 bg-white dark:bg-navy-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-electric-600 dark:text-cyan-300">

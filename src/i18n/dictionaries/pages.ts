@@ -76,7 +76,7 @@ const en = {
       "Sunlit Network was founded to solve a simple problem: households and businesses in Khulna Division deserved internet service that was fast, honestly priced and genuinely reliable. Since {founded}, we've built out fiber-backed infrastructure across Jashore, Satkhira, Narail and Khulna city, investing in redundant links and round-the-clock monitoring rather than cutting corners.",
     storyP2: "Today we serve tens of thousands of residential and business customers, and we continue to expand our network to reach more communities every year.",
     milestones: [
-      { year: "2018", title: "Sunlit Network founded", description: "Started with a mission to bring dependable broadband to Jashore." },
+      { year: "2014", title: "Sunlit Network founded", description: "Started with a mission to bring dependable broadband to Jashore." },
       { year: "2020", title: "Expanded to Khulna & Satkhira", description: "Grew our fiber footprint to serve more households and businesses." },
       { year: "2022", title: "Business & Real IP services launched", description: "Introduced dedicated bandwidth and public IP offerings for organizations." },
       { year: "2025", title: "Narail coverage begins", description: "Continued expanding across Khulna Division districts." },
@@ -237,7 +237,7 @@ const bn: typeof en = {
       "সানলিট নেটওয়ার্ক প্রতিষ্ঠিত হয়েছিল একটি সহজ সমস্যা সমাধানের জন্য: খুলনা বিভাগের বাসা ও ব্যবসাগুলোর প্রাপ্য ছিল দ্রুত, সৎ মূল্যের এবং সত্যিকারের নির্ভরযোগ্য ইন্টারনেট সেবা। {founded} সাল থেকে আমরা যশোর, সাতক্ষীরা, নড়াইল এবং খুলনা শহর জুড়ে ফাইবার-ভিত্তিক অবকাঠামো গড়ে তুলেছি, ছাড় না দিয়ে রিডানডেন্ট লিংক ও চব্বিশ ঘণ্টা মনিটরিংয়ে বিনিয়োগ করেছি।",
     storyP2: "আজ আমরা হাজার হাজার আবাসিক ও ব্যবসায়িক গ্রাহককে সেবা দিচ্ছি, এবং প্রতি বছর আরও কমিউনিটিতে পৌঁছাতে আমাদের নেটওয়ার্ক সম্প্রসারণ করে চলেছি।",
     milestones: [
-      { year: "২০১৮", title: "সানলিট নেটওয়ার্ক প্রতিষ্ঠিত", description: "যশোরে নির্ভরযোগ্য ব্রডব্যান্ড পৌঁছে দেওয়ার লক্ষ্য নিয়ে যাত্রা শুরু।" },
+      { year: "২০১৪", title: "সানলিট নেটওয়ার্ক প্রতিষ্ঠিত", description: "যশোরে নির্ভরযোগ্য ব্রডব্যান্ড পৌঁছে দেওয়ার লক্ষ্য নিয়ে যাত্রা শুরু।" },
       { year: "২০২০", title: "খুলনা ও সাতক্ষীরায় সম্প্রসারণ", description: "আরও বেশি বাসা ও ব্যবসাকে সেবা দিতে ফাইবার নেটওয়ার্ক বৃদ্ধি।" },
       { year: "২০২২", title: "বিজনেস ও রিয়েল আইপি সার্ভিস চালু", description: "প্রতিষ্ঠানগুলোর জন্য ডেডিকেটেড ব্যান্ডউইথ ও পাবলিক আইপি সেবা চালু।" },
       { year: "২০২৫", title: "নড়াইলে কভারেজ শুরু", description: "খুলনা বিভাগ জুড়ে সম্প্রসারণ অব্যাহত।" },

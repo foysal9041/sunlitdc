@@ -32,7 +32,7 @@ export default async function CoveragePage() {
     <>
       <section className="relative overflow-hidden bg-white dark:bg-navy-900 pb-20 pt-32 sm:pt-40">
         <div className="bg-grid pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
-        <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-cyan-200/40 blur-[140px]" />
+        <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-cyan-200/22 blur-[140px]" />
 
         <Container className="relative">
           <ScrollReveal className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">

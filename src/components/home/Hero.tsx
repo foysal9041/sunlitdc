@@ -12,7 +12,7 @@ export function Hero({ locale }: { locale: Locale }) {
   return (
     <section className="relative overflow-hidden bg-white dark:bg-navy-900 pb-24 pt-36 sm:pt-44">
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-cyan-200/40 blur-[140px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-cyan-200/22 blur-[140px]" />
 
       <Container className="relative grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
         <ScrollReveal>

@@ -18,8 +18,9 @@ export function formatBDT(amount: number): string {
   return new Intl.NumberFormat("en-US").format(amount);
 }
 
-export function formatNumber(value: number): string {
+export function formatNumber(value: number, useGrouping = true): string {
   return new Intl.NumberFormat("en-US", {
     maximumFractionDigits: value % 1 === 0 ? 0 : 1,
+    useGrouping,
   }).format(value);
 }

@@ -10,7 +10,7 @@ import {
 } from "@/i18n/dictionaries/content";
 
 const trustStatsEn: StatItem[] = [
-  { id: "customers", value: 50000, suffix: "+", label: "Connected Customers" },
+  { id: "founded", value: 2014, suffix: "", label: "Founded" },
   { id: "reliability", value: 99.9, suffix: "%", label: "Network Reliability" },
   { id: "monitoring", value: 24, suffix: "/7", label: "Network Monitoring" },
   { id: "districts", value: 4, suffix: "+", label: "District Coverage" },

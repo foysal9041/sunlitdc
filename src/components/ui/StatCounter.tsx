@@ -8,9 +8,10 @@ interface StatCounterProps {
   suffix?: string;
   duration?: number;
   className?: string;
+  useGrouping?: boolean;
 }
 
-export function StatCounter({ value, suffix = "", duration = 1600, className }: StatCounterProps) {
+export function StatCounter({ value, suffix = "", duration = 1600, className, useGrouping = true }: StatCounterProps) {
   const [display, setDisplay] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
@@ -53,7 +54,7 @@ export function StatCounter({ value, suffix = "", duration = 1600, className }: 
 
   return (
     <span ref={ref} className={className}>
-      {formatNumber(display)}
+      {formatNumber(display, useGrouping)}
       {suffix}
     </span>
   );

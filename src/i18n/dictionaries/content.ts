@@ -200,7 +200,7 @@ export const billPaymentNotesBn: string[] = [
 ];
 
 export const trustStatsBn: Record<string, { label: string; suffix: string }> = {
-  customers: { label: "সংযুক্ত গ্রাহক", suffix: "+" },
+  founded: { label: "প্রতিষ্ঠিত", suffix: "" },
   reliability: { label: "নেটওয়ার্ক নির্ভরযোগ্যতা", suffix: "%" },
   monitoring: { label: "নেটওয়ার্ক মনিটরিং", suffix: "/৭" },
   districts: { label: "জেলা কভারেজ", suffix: "+" },

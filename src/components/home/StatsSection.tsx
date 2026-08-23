@@ -18,7 +18,7 @@ export async function StatsSection({ locale }: { locale: Locale }) {
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.id} delay={i * 80} className="text-center">
               <p className="text-4xl font-extrabold tracking-tight text-navy-950 dark:text-white sm:text-5xl">
-                <StatCounter value={stat.value} suffix={stat.suffix} />
+                <StatCounter value={stat.value} suffix={stat.suffix} useGrouping={stat.id !== "founded"} />
               </p>
               <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{stat.label}</p>
             </ScrollReveal>

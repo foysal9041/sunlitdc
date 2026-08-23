@@ -10,7 +10,7 @@ export const company = {
     "Sunlit Network connects people, homes and businesses with fast, reliable and future-ready internet.",
   description:
     "Sunlit Network provides fast, reliable and high-performance internet, business connectivity and digital services across Bangladesh.",
-  founded: "2018",
+  founded: "2014",
   headquarters: {
     addressLine: "Sunlit DC",
     city: "Khulna",
