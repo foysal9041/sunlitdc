@@ -114,9 +114,9 @@ export function Navbar({ locale }: { locale: Locale }) {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200",
+                  "rounded-full px-4 py-2 text-sm font-medium transition-all duration-200",
                   active
-                    ? "text-navy-950 dark:text-white"
+                    ? "glass text-navy-950 shadow-sm shadow-slate-900/10 dark:text-white"
                     : "text-slate-600 hover:text-navy-950 dark:text-slate-300 dark:hover:text-white"
                 )}
               >
@@ -164,9 +164,9 @@ export function Navbar({ locale }: { locale: Locale }) {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "rounded-2xl px-4 py-3 text-base font-medium transition-colors",
+                  "rounded-2xl px-4 py-3 text-base font-medium transition-all",
                   activeHref === link.href
-                    ? "bg-slate-100 text-navy-950 dark:bg-white/10 dark:text-white"
+                    ? "glass text-navy-950 shadow-sm shadow-slate-900/10 dark:text-white"
                     : "text-slate-600 hover:bg-slate-50 hover:text-navy-950 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
                 )}
               >

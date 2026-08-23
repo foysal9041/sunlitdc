@@ -5,16 +5,59 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Icon } from "@/components/icons/Icon";
 import { getHomeDictionary } from "@/i18n/dictionaries/home";
 import type { Locale } from "@/i18n/config";
+import { cn } from "@/lib/utils";
+
+// Hero background experiment switch. Flip back to "original" to instantly
+// restore the previous flat mist/blob background — nothing below is deleted.
+const HERO_BACKGROUND_STYLE: "3d-gradient" | "original" = "3d-gradient";
 
 export function Hero({ locale }: { locale: Locale }) {
   const t = getHomeDictionary(locale).hero;
 
   return (
-    <section className="relative overflow-hidden bg-mist-50 dark:bg-navy-900 pb-24 pt-36 sm:pt-44">
-      <div className="bg-grid pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-cyan-200/25 blur-[140px]" />
-      <div className="pointer-events-none absolute -bottom-32 -left-32 h-[380px] w-[380px] rounded-full bg-electric-300/25 blur-[130px] dark:bg-electric-500/15" />
-      <div className="pointer-events-none absolute right-[-10%] top-1/3 h-[300px] w-[300px] rounded-full bg-cyan-300/15 blur-[110px]" />
+    <section
+      className={cn(
+        "relative overflow-hidden pb-24 pt-36 sm:pt-44 dark:bg-navy-900",
+        HERO_BACKGROUND_STYLE === "3d-gradient" ? "hero-mesh-bg" : "bg-mist-50"
+      )}
+    >
+      {/* Dark mode keeps the original ambient background regardless of HERO_BACKGROUND_STYLE — this experiment is light-mode only. */}
+      <div className="pointer-events-none absolute inset-0 hidden dark:block" aria-hidden="true">
+        <div className="bg-grid absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
+        <div className="absolute -top-40 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-cyan-200/10 blur-[140px]" />
+        <div className="absolute -bottom-32 -left-32 h-[380px] w-[380px] rounded-full bg-electric-500/15 blur-[130px]" />
+        <div className="absolute right-[-10%] top-1/3 h-[300px] w-[300px] rounded-full bg-cyan-300/10 blur-[110px]" />
+      </div>
+
+      {HERO_BACKGROUND_STYLE === "original" ? (
+        <div className="pointer-events-none absolute inset-0 dark:hidden" aria-hidden="true">
+          <div className="bg-grid absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
+          <div className="absolute -top-40 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-cyan-200/25 blur-[140px]" />
+          <div className="absolute -bottom-32 -left-32 h-[380px] w-[380px] rounded-full bg-electric-300/25 blur-[130px]" />
+          <div className="absolute right-[-10%] top-1/3 h-[300px] w-[300px] rounded-full bg-cyan-300/15 blur-[110px]" />
+        </div>
+      ) : (
+        <div className="pointer-events-none absolute inset-0 dark:hidden" aria-hidden="true">
+          {/* Soft 3D mesh-gradient atmosphere: layered radial glows + light rays
+              behind the network visual + a faint grain to avoid a flat look. */}
+          <div className="hero-mesh-rays absolute inset-0" />
+          <div className="hero-mesh-noise absolute inset-0" />
+          <div
+            className="motion-safe:animate-mesh-drift absolute -top-24 left-[6%] h-[420px] w-[420px] rounded-full bg-sky-300/30 blur-[130px]"
+            style={{ animationDuration: "26s" }}
+          />
+          <div
+            className="motion-safe:animate-mesh-drift absolute top-[4%] right-[2%] h-[560px] w-[560px] rounded-full bg-cyan-300/35 blur-[150px]"
+            style={{ animationDuration: "22s", animationDelay: "-8s" }}
+          />
+          <div
+            className="motion-safe:animate-mesh-drift absolute bottom-[-20%] left-[20%] h-[420px] w-[420px] rounded-full bg-electric-300/20 blur-[130px]"
+            style={{ animationDuration: "30s", animationDelay: "-14s" }}
+          />
+          <div className="absolute bottom-[8%] right-[14%] h-[300px] w-[300px] rounded-full bg-teal-200/20 blur-[120px]" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-navy-950/[0.05] to-transparent" />
+        </div>
+      )}
 
       <Container className="relative grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
         <ScrollReveal>

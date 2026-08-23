@@ -73,6 +73,7 @@
   --animate-icon-bounce: icon-bounce 2.6s ease-in-out infinite;
   --animate-icon-spin-slow: icon-spin-slow 5s linear infinite;
   --animate-icon-flicker: icon-flicker 2.8s ease-in-out infinite;
+  --animate-mesh-drift: mesh-drift 24s ease-in-out infinite;
 }
 
 * {
@@ -151,6 +152,43 @@ body {
     linear-gradient(90deg, color-mix(in srgb, white 6%, transparent) 1px, transparent 1px);
 }
 
+/* Hero "3d-gradient" background experiment (see HERO_BACKGROUND_STYLE in
+   Hero.tsx) — scoped to html:not(.dark) so it can never fight the plain
+   dark:bg-navy-900 fill used everywhere else in dark mode. */
+html:not(.dark) .hero-mesh-bg {
+  background:
+    radial-gradient(1200px 640px at 84% 16%, color-mix(in srgb, #d6f7ff 65%, transparent) 0%, transparent 62%),
+    radial-gradient(900px 620px at 10% 84%, color-mix(in srgb, #dbeeff 55%, transparent) 0%, transparent 65%),
+    radial-gradient(760px 520px at 48% -4%, color-mix(in srgb, #eafcff 55%, transparent) 0%, transparent 60%),
+    linear-gradient(165deg, #ffffff 0%, #f6fdff 40%, #eef8fb 75%, #eaf5fa 100%);
+}
+
+html:not(.dark) .hero-mesh-rays {
+  background: conic-gradient(
+    from 205deg at 80% 40%,
+    transparent 0deg,
+    color-mix(in srgb, #ffffff 55%, transparent) 6deg,
+    transparent 18deg,
+    transparent 38deg,
+    color-mix(in srgb, #bff0ff 45%, transparent) 46deg,
+    transparent 58deg,
+    transparent 96deg,
+    color-mix(in srgb, #ffffff 40%, transparent) 104deg,
+    transparent 116deg,
+    transparent 360deg
+  );
+  opacity: 0.4;
+  mask-image: radial-gradient(closest-side, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(closest-side, black, transparent 72%);
+}
+
+html:not(.dark) .hero-mesh-noise {
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-14px); }
@@ -159,6 +197,13 @@ body {
 @keyframes pulse-slow {
   0%, 100% { opacity: 0.55; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Very slow, GPU-cheap (transform-only) drift for the hero mesh-gradient
+   blobs — subtle atmospheric movement, never distracting. */
+@keyframes mesh-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(3%, -4%, 0) scale(1.06); }
 }
 
 @keyframes dash {
