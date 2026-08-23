@@ -24,8 +24,7 @@ export interface AvailabilityQuery {
 }
 
 export interface AvailabilityResult {
-  available: boolean;
-  message: string;
+  received: boolean;
 }
 
 export interface ContactSubmission {
@@ -51,11 +50,20 @@ async function requestJSON<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const coverageApi = {
-  checkAvailability: (query: AvailabilityQuery) =>
-    requestJSON<AvailabilityResult>("/coverage/check", {
+  // First-party endpoint (not the external CRM) — always available regardless
+  // of NEXT_PUBLIC_API_URL. Saves the request to our own database for the
+  // admin panel's lead queue.
+  checkAvailability: async (query: AvailabilityQuery): Promise<AvailabilityResult> => {
+    const response = await fetch("/api/coverage/check", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(query),
-    }),
+    });
+    if (!response.ok) {
+      throw new Error(`Request to /api/coverage/check failed with status ${response.status}`);
+    }
+    return response.json() as Promise<AvailabilityResult>;
+  },
 };
 
 export const contactApi = {

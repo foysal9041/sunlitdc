@@ -16,6 +16,13 @@ enum PopStatus {
   DISABLED
 }
 
+enum AvailabilityStatus {
+  NEW
+  CONTACTED
+  CONFIRMED
+  DECLINED
+}
+
 model AdminUser {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -51,4 +58,18 @@ model PointOfPresence {
 
   @@index([district])
   @@index([status])
+}
+
+// Submissions from the public "Check Availability" form on the Coverage
+// page — a lead queue for the sales/NOC team, reviewed from the admin panel.
+model AvailabilityRequest {
+  id        String             @id @default(cuid())
+  district  String
+  area      String
+  phone     String?
+  status    AvailabilityStatus @default(NEW)
+  createdAt DateTime           @default(now())
+
+  @@index([status])
+  @@index([createdAt])
 }

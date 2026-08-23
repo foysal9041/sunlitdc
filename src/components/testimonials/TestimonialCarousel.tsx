@@ -31,12 +31,12 @@ export function TestimonialCarousel({ locale }: { locale: Locale }) {
             />
           ))}
         </div>
-        <blockquote className="mt-6 text-lg font-medium leading-relaxed text-navy-950 sm:text-xl">
+        <blockquote className="mt-6 text-lg font-medium leading-relaxed text-navy-950 dark:text-white sm:text-xl">
           “{testimonial.quote}”
         </blockquote>
         <div className="mt-6">
-          <p className="font-semibold text-navy-950">{testimonial.name}</p>
-          <p className="text-sm text-slate-500">
+          <p className="font-semibold text-navy-950 dark:text-white">{testimonial.name}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             {testimonial.role ? `${testimonial.role} · ` : ""}
             {testimonial.location}
           </p>

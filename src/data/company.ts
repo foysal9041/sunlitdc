@@ -36,6 +36,26 @@ export const company = {
   },
 } as const;
 
+/**
+ * All 10 districts of Khulna Division — used for the public "Check
+ * Availability" form so visitors in areas we don't yet actively serve can
+ * still register interest. Distinct from `company.coverage.districts`,
+ * which lists only where we currently have live PoPs (used for SEO/coverage
+ * display, so it must stay accurate to actual service area).
+ */
+export const khulnaDivisionDistricts = [
+  "Bagerhat",
+  "Chuadanga",
+  "Jashore",
+  "Jhenaidah",
+  "Khulna",
+  "Kushtia",
+  "Magura",
+  "Meherpur",
+  "Narail",
+  "Satkhira",
+] as const;
+
 export const socialLinks = [
   { label: "Facebook", href: "https://facebook.com/sunlitnetwork", icon: "facebook" },
   { label: "YouTube", href: "https://youtube.com/@sunlitnetwork", icon: "youtube" },

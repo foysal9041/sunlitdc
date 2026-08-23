@@ -8,6 +8,7 @@ import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/icons/Icon";
 import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { getCommonDictionary } from "@/i18n/dictionaries/common";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
@@ -69,7 +70,9 @@ export function Navbar({ locale }: { locale: Locale }) {
                   href={link.href}
                   className={cn(
                     "rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200",
-                    active ? "text-navy-950" : "text-slate-600 hover:text-navy-950"
+                    active
+                      ? "text-navy-950 dark:text-white"
+                      : "text-slate-600 hover:text-navy-950 dark:text-slate-300 dark:hover:text-white"
                   )}
                 >
                   {link.label}
@@ -81,6 +84,7 @@ export function Navbar({ locale }: { locale: Locale }) {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle />
           <Button href={company.customerPortalUrl} target="_blank" rel="noopener noreferrer" variant="ghost" size="md">
             {t.nav.customerLogin}
           </Button>
@@ -90,10 +94,11 @@ export function Navbar({ locale }: { locale: Locale }) {
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle className="h-8 w-8" />
           <LanguageSwitcher locale={locale} size="sm" />
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-navy-950"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-navy-950 dark:text-white"
             aria-label={open ? t.closeMenu : t.openMenu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -117,13 +122,15 @@ export function Navbar({ locale }: { locale: Locale }) {
                 href={link.href}
                 className={cn(
                   "rounded-2xl px-4 py-3 text-base font-medium transition-colors",
-                  pathname === link.href ? "bg-slate-100 text-navy-950" : "text-slate-600 hover:bg-slate-50 hover:text-navy-950"
+                  pathname === link.href
+                    ? "bg-slate-100 text-navy-950 dark:bg-white/10 dark:text-white"
+                    : "text-slate-600 hover:bg-slate-50 hover:text-navy-950 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
                 )}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="mt-2 flex flex-col gap-2 border-t border-slate-200 pt-4">
+            <div className="mt-2 flex flex-col gap-2 border-t border-slate-200 pt-4 dark:border-white/10">
               <Button
                 href={company.customerPortalUrl}
                 target="_blank"

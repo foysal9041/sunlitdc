@@ -24,11 +24,11 @@ export function CoveragePackagesStrip({ locale }: { locale: Locale }) {
     <div>
       <div className="mb-8 flex items-end justify-between gap-4">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-widest text-electric-600">{t.packagesStripEyebrow}</span>
-          <h2 className="mt-2 text-2xl font-extrabold text-navy-950 sm:text-3xl">{t.packagesStripTitle}</h2>
-          <p className="mt-1 text-sm text-slate-500">{t.packagesStripSubtitle}</p>
+          <span className="text-xs font-semibold uppercase tracking-widest text-electric-600 dark:text-cyan-300">{t.packagesStripEyebrow}</span>
+          <h2 className="mt-2 text-2xl font-extrabold text-navy-950 dark:text-white sm:text-3xl">{t.packagesStripTitle}</h2>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{t.packagesStripSubtitle}</p>
         </div>
-        <Link href="/internet#packages" className="hidden shrink-0 text-sm font-semibold text-electric-600 hover:text-electric-500 sm:block">
+        <Link href="/internet#packages" className="hidden shrink-0 text-sm font-semibold text-electric-600 dark:text-cyan-300 hover:text-electric-500 sm:block">
           {t.packagesStripLink} →
         </Link>
       </div>
@@ -40,12 +40,12 @@ export function CoveragePackagesStrip({ locale }: { locale: Locale }) {
             <div
               key={pkg.id}
               className={cn(
-                "relative w-40 shrink-0 snap-start rounded-2xl border bg-white p-4 text-center shadow-sm sm:w-auto",
+                "relative w-40 shrink-0 snap-start rounded-2xl border bg-white dark:bg-navy-900 p-4 text-center shadow-sm sm:w-auto",
                 pkg.popular ? "border-cyan-300 shadow-[0_0_30px_-10px_rgba(47,99,255,0.35)]" : accent.ring
               )}
             >
               {pkg.popular && (
-                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-linear-to-r from-electric-500 to-cyan-400 px-2.5 py-0.5 text-[10px] font-bold uppercase text-navy-950">
+                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-linear-to-r from-electric-500 to-cyan-400 px-2.5 py-0.5 text-[10px] font-bold uppercase text-navy-950 dark:text-white">
                   {t.popular}
                 </span>
               )}
@@ -53,8 +53,8 @@ export function CoveragePackagesStrip({ locale }: { locale: Locale }) {
               <div className={cn("mx-auto my-3 flex h-12 w-12 items-center justify-center rounded-full", accent.glow)}>
                 <Icon name="gauge" className={cn("h-6 w-6", accent.text)} />
               </div>
-              <p className="text-sm font-semibold text-navy-950">৳{formatBDT(pkg.priceBDT)}</p>
-              <p className="text-[11px] text-slate-500">{misc.perMonth}</p>
+              <p className="text-sm font-semibold text-navy-950 dark:text-white">৳{formatBDT(pkg.priceBDT)}</p>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">{misc.perMonth}</p>
             </div>
           );
         })}

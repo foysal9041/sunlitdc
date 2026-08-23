@@ -25,20 +25,20 @@ export function FloatingActions({ locale }: { locale: Locale }) {
         <Icon name="whatsapp" className="relative h-7 w-7" strokeWidth={0} fill="currentColor" />
       </a>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 flex items-stretch gap-px border-t border-slate-200 bg-white/95 backdrop-blur sm:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 flex items-stretch gap-px border-t border-slate-200 bg-white/95 backdrop-blur sm:hidden dark:border-white/10 dark:bg-navy-950/95">
         <a
           href={`tel:${company.contact.phone.replace(/[^\d+]/g, "")}`}
-          className="flex flex-1 flex-col items-center gap-1 py-3 text-xs font-medium text-navy-950"
+          className="flex flex-1 flex-col items-center gap-1 py-3 text-xs font-medium text-navy-950 dark:text-white"
         >
-          <Icon name="phone" className="h-5 w-5 text-electric-600" />
+          <Icon name="phone" className="h-5 w-5 text-electric-600 dark:text-cyan-300" />
           {t.misc.call}
         </a>
         <a href="/internet" className="flex flex-1 flex-col items-center gap-1 bg-electric-500 py-3 text-xs font-semibold text-navy-950">
           <Icon name="bolt" className="h-5 w-5" />
           {t.nav.getConnected}
         </a>
-        <a href="/support" className="flex flex-1 flex-col items-center gap-1 py-3 text-xs font-medium text-navy-950">
-          <Icon name="headset" className="h-5 w-5 text-electric-600" />
+        <a href="/support" className="flex flex-1 flex-col items-center gap-1 py-3 text-xs font-medium text-navy-950 dark:text-white">
+          <Icon name="headset" className="h-5 w-5 text-electric-600 dark:text-cyan-300" />
           {t.misc.supportShort}
         </a>
       </div>

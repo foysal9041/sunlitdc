@@ -15,7 +15,7 @@ export function PricingSection({ locale }: { locale: Locale }) {
   const customPackageNote = getCustomPackageNote(locale);
 
   return (
-    <section id="packages" className="scroll-mt-24 bg-white py-24">
+    <section id="packages" className="scroll-mt-24 bg-white dark:bg-navy-900 py-24">
       <Container>
         <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
 
@@ -27,9 +27,9 @@ export function PricingSection({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        <ScrollReveal className="mt-12 flex flex-col items-center gap-4 rounded-3xl border border-dashed border-slate-300 bg-mist-50 p-8 text-center">
-          <h3 className="text-xl font-bold text-navy-950">{customPackageNote.title}</h3>
-          <p className="max-w-lg text-sm text-slate-500">{customPackageNote.description}</p>
+        <ScrollReveal className="mt-12 flex flex-col items-center gap-4 rounded-3xl border border-dashed border-slate-300 dark:border-white/15 bg-mist-50 dark:bg-navy-950 p-8 text-center">
+          <h3 className="text-xl font-bold text-navy-950 dark:text-white">{customPackageNote.title}</h3>
+          <p className="max-w-lg text-sm text-slate-500 dark:text-slate-400">{customPackageNote.description}</p>
           <Button href="/contact?type=custom" variant="secondary">
             {buttons.requestCustomPackage}
           </Button>

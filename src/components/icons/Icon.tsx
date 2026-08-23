@@ -156,6 +156,13 @@ const paths: Record<IconName, React.ReactNode> = {
       <path d="M9.5 9.7a2.6 2.6 0 0 0 3.6 3.7" />
     </>
   ),
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4.2" />
+      <path d="M12 2.5v2.3M12 19.2v2.3M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6" />
+    </>
+  ),
+  moon: <path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11Z" />,
 };
 
 export function Icon({ name, className, ...props }: IconProps) {

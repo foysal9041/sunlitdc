@@ -121,4 +121,6 @@ export type IconName =
   | "cpu"
   | "user"
   | "eye"
-  | "eyeOff";
+  | "eyeOff"
+  | "sun"
+  | "moon";

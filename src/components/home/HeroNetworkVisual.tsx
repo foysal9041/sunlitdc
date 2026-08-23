@@ -144,7 +144,7 @@ export function HeroNetworkVisual({ locale }: { locale: Locale }) {
           className="absolute -translate-x-1/2 -translate-y-1/2 animate-float"
           style={{ left: `${pill.x}%`, top: `${pill.y}%`, animationDelay: `${i * 0.35}s`, animationDuration: "5.5s" }}
         >
-          <span className="glass whitespace-nowrap rounded-full px-2 py-1 text-[10px] font-semibold text-navy-950 shadow-sm sm:px-3.5 sm:py-1.5 sm:text-xs">
+          <span className="glass whitespace-nowrap rounded-full px-2 py-1 text-[10px] font-semibold text-navy-950 dark:text-white shadow-sm sm:px-3.5 sm:py-1.5 sm:text-xs">
             {pillLabels[pill.id as keyof typeof pillLabels] ?? pill.label}
           </span>
         </div>

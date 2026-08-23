@@ -31,7 +31,7 @@ export function LanguageSwitcher({
       className={cn(
         "inline-flex items-center rounded-full border font-semibold",
         size === "sm" ? "p-0.5 text-[10px]" : "p-0.5 text-xs",
-        variant === "dark" ? "border-white/15 bg-white/5" : "border-slate-200 bg-white"
+        variant === "dark" ? "border-white/15 bg-white/5" : "border-slate-200 bg-white dark:border-white/15 dark:bg-white/5"
       )}
       role="group"
       aria-label="Language"
@@ -50,7 +50,7 @@ export function LanguageSwitcher({
               ? "bg-linear-to-r from-electric-500 to-cyan-400 text-navy-950"
               : variant === "dark"
                 ? "text-slate-300 hover:text-white"
-                : "text-slate-500 hover:text-navy-950"
+                : "text-slate-500 hover:text-navy-950 dark:text-slate-300 dark:hover:text-white"
           )}
         >
           {code === "en" ? "EN" : "বাং"}

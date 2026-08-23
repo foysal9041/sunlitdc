@@ -28,6 +28,20 @@ export const loginSchema = z.object({
   password: z.string().min(1).max(200),
 });
 
+export const availabilityStatusSchema = z.enum(["NEW", "CONTACTED", "CONFIRMED", "DECLINED"]);
+
+export const availabilityInputSchema = z.object({
+  district: z.string().trim().min(2).max(60),
+  area: z.string().trim().min(2).max(120),
+  phone: z.string().trim().max(30).optional().nullable(),
+});
+
+export const availabilityUpdateSchema = z.object({
+  status: availabilityStatusSchema,
+});
+
 export type PopInput = z.infer<typeof popInputSchema>;
 export type PopUpdateInput = z.infer<typeof popUpdateSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
+export type AvailabilityInput = z.infer<typeof availabilityInputSchema>;
+export type AvailabilityUpdateInput = z.infer<typeof availabilityUpdateSchema>;

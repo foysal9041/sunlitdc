@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #0a1130;
@@ -22,6 +24,11 @@
 
   --color-mist-50: #f6fbfd;
   --color-mist-100: #eaf6fa;
+}
+
+.dark {
+  --background: #070c1e;
+  --foreground: #f4f7fc;
 }
 
 @theme inline {
@@ -74,6 +81,7 @@ body {
   font-family: var(--font-sans), var(--font-bengali), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 ::selection {
@@ -110,6 +118,11 @@ body {
   border: 1px solid color-mix(in srgb, #0a1130 8%, transparent);
 }
 
+.dark .glass {
+  background: color-mix(in srgb, #0d1530 72%, transparent);
+  border: 1px solid color-mix(in srgb, white 10%, transparent);
+}
+
 .text-gradient {
   background: linear-gradient(90deg, var(--color-electric-600) 0%, var(--color-cyan-400) 100%);
   -webkit-background-clip: text;
@@ -122,6 +135,12 @@ body {
     linear-gradient(color-mix(in srgb, #0a1130 5%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in srgb, #0a1130 5%, transparent) 1px, transparent 1px);
   background-size: 44px 44px;
+}
+
+.dark .bg-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, white 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, white 6%, transparent) 1px, transparent 1px);
 }
 
 @keyframes float {

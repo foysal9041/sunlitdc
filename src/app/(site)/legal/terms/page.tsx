@@ -19,15 +19,15 @@ export default async function TermsPage() {
   return (
     <>
       <PageHero eyebrow={locale === "bn" ? "আইনি" : "Legal"} title={t.title} subtitle={t.lastUpdated} />
-      <section className="bg-white pb-24">
+      <section className="bg-white dark:bg-navy-900 pb-24">
         <Container className="max-w-3xl space-y-8">
           {t.sections.map((section) => (
             <div key={section.title}>
-              <h2 className="text-lg font-bold text-navy-950">{section.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{section.body}</p>
+              <h2 className="text-lg font-bold text-navy-950 dark:text-white">{section.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{section.body}</p>
             </div>
           ))}
-          <p className="text-sm leading-relaxed text-slate-600">
+          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             {t.questionsPrefix} {company.contact.email}.
           </p>
         </Container>

@@ -223,6 +223,10 @@ export const districtNamesBn: Record<string, string> = {
   Narail: "নড়াইল",
   Chuadanga: "চুয়াডাঙ্গা",
   Jhenaidah: "ঝিনাইদহ",
+  Bagerhat: "বাগেরহাট",
+  Kushtia: "কুষ্টিয়া",
+  Magura: "মাগুরা",
+  Meherpur: "মেহেরপুর",
 };
 
 // Known seeded upazila/area names, for display only.

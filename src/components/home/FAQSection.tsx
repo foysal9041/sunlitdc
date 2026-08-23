@@ -11,7 +11,7 @@ export function FAQSection({ locale }: { locale: Locale }) {
   const faqs = getFaqs(locale);
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-white py-24">
+    <section id="faq" className="scroll-mt-24 bg-white dark:bg-navy-900 py-24">
       <Container className="max-w-3xl">
         <SectionHeading eyebrow={t.eyebrow} title={t.title} />
         <ScrollReveal delay={100} className="mt-12">

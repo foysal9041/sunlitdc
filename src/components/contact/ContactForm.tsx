@@ -11,7 +11,7 @@ import { getPagesDictionary } from "@/i18n/dictionaries/pages";
 type Status = "idle" | "loading" | "success" | "error" | "unavailable-backend";
 
 const inputClass =
-  "w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-navy-950 outline-none placeholder:text-slate-400 focus:border-electric-400";
+  "w-full rounded-xl border border-slate-300 dark:border-white/15 bg-white dark:bg-navy-900 px-4 py-3 text-sm text-navy-950 dark:text-white outline-none placeholder:text-slate-400 focus:border-electric-400";
 
 const subjectFromParams = (params: URLSearchParams) => {
   const service = params.get("service");
@@ -33,10 +33,11 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
     setStatus("loading");
     setMessage(null);
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
     const payload = {
       name: String(formData.get("name") ?? ""),
       email: String(formData.get("email") ?? ""),
@@ -49,7 +50,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
       await contactApi.submit(payload);
       setStatus("success");
       setMessage(t.success);
-      event.currentTarget.reset();
+      form.reset();
     } catch (error) {
       if (error instanceof ApiNotConfiguredError) {
         setStatus("unavailable-backend");
@@ -65,19 +66,19 @@ export function ContactForm({ locale }: { locale: Locale }) {
     <form onSubmit={handleSubmit} className="glass rounded-3xl p-6 shadow-lg shadow-slate-900/5 sm:p-8">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <label className="block">
-          <span className="mb-1.5 block text-xs font-medium text-slate-600">{t.fullName}</span>
+          <span className="mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-300">{t.fullName}</span>
           <input name="name" required placeholder={t.namePlaceholder} className={inputClass} />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-xs font-medium text-slate-600">{t.phone}</span>
+          <span className="mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-300">{t.phone}</span>
           <input name="phone" type="tel" required placeholder={t.phonePlaceholder} className={inputClass} />
         </label>
         <label className="block sm:col-span-2">
-          <span className="mb-1.5 block text-xs font-medium text-slate-600">{t.email}</span>
+          <span className="mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-300">{t.email}</span>
           <input name="email" type="email" placeholder={t.emailPlaceholder} className={inputClass} />
         </label>
         <label className="block sm:col-span-2">
-          <span className="mb-1.5 block text-xs font-medium text-slate-600">{t.subject}</span>
+          <span className="mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-300">{t.subject}</span>
           <input
             name="subject"
             defaultValue={subjectFromParams(searchParams)}
@@ -86,7 +87,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
           />
         </label>
         <label className="block sm:col-span-2">
-          <span className="mb-1.5 block text-xs font-medium text-slate-600">{t.message}</span>
+          <span className="mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-300">{t.message}</span>
           <textarea name="message" required rows={4} placeholder={t.messagePlaceholder} className={inputClass} />
         </label>
       </div>
@@ -96,7 +97,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
       </Button>
 
       {message && (
-        <p className={`mt-4 text-sm ${status === "error" ? "text-red-600" : "text-electric-600"}`}>{message}</p>
+        <p className={`mt-4 text-sm ${status === "error" ? "text-red-600" : "text-electric-600 dark:text-cyan-300"}`}>{message}</p>
       )}
     </form>
   );

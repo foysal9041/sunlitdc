@@ -128,9 +128,9 @@ export function CoverageOrbit({ districts, locale }: { districts: PublicDistrict
               style={{ animationDelay: `${i * 0.5}s` }}
             />
           </span>
-          <span className="whitespace-nowrap rounded-lg border border-slate-200 bg-white px-1.5 py-0.5 text-[10px] shadow-sm sm:px-2.5 sm:py-1 sm:text-xs">
-            <span className="font-semibold text-navy-950">{d.districtLabel}</span>
-            <span className="ml-1 text-electric-600 sm:ml-1.5">
+          <span className="whitespace-nowrap rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 px-1.5 py-0.5 text-[10px] shadow-sm sm:px-2.5 sm:py-1 sm:text-xs">
+            <span className="font-semibold text-navy-950 dark:text-white">{d.districtLabel}</span>
+            <span className="ml-1 text-electric-600 dark:text-cyan-300 sm:ml-1.5">
               {d.areaCount} {d.areaCount === 1 ? t.area : t.areas}
             </span>
           </span>
