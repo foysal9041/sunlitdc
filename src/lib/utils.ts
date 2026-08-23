@@ -24,3 +24,14 @@ export function formatNumber(value: number, useGrouping = true): string {
     useGrouping,
   }).format(value);
 }
+
+/**
+ * Builds a wa.me link from a local Bangladeshi number (e.g. "01334-921013").
+ * wa.me requires the full international number with country code and no
+ * leading 0 (e.g. "8801334921013") — a bare local number silently fails to
+ * open a chat.
+ */
+export function whatsappLink(localNumber: string): string {
+  const digits = localNumber.replace(/\D/g, "").replace(/^0+/, "");
+  return `https://wa.me/880${digits}`;
+}

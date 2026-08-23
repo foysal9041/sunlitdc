@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/icons/Icon";
 import { getBkashSteps, getPaymentNotes, paymentExample } from "@/data/billPayment";
 import { company } from "@/data/company";
-import { formatBDT } from "@/lib/utils";
+import { formatBDT, whatsappLink } from "@/lib/utils";
 import { buildMetadata } from "@/lib/seo";
 import { getLocale } from "@/i18n/getLocale";
 import { getPagesDictionary } from "@/i18n/dictionaries/pages";
@@ -107,7 +107,7 @@ export default async function BillPaymentPage() {
               <Button href={`tel:${company.contact.phone.replace(/[^\d+]/g, "")}`} size="lg" icon>
                 {t.callButton} {company.contact.phone}
               </Button>
-              <Button href={`https://wa.me/${company.contact.whatsapp.replace(/[^\d]/g, "")}`} variant="secondary" size="lg">
+              <Button href={whatsappLink(company.contact.whatsapp)} variant="secondary" size="lg">
                 {t.whatsappButton}
               </Button>
               <Button href="/support#payment" variant="ghost" size="lg">

@@ -1,3 +1,5 @@
+import { whatsappLink } from "@/lib/utils";
+
 export const company = {
   name: "SUNLIT NETWORK",
   shortName: "Sunlit",
@@ -60,5 +62,5 @@ export const socialLinks = [
   { label: "Facebook", href: "https://facebook.com/sunlitnetwork", icon: "facebook" },
   { label: "YouTube", href: "https://youtube.com/@sunlitnetwork", icon: "youtube" },
   { label: "LinkedIn", href: "https://linkedin.com/company/sunlitnetwork", icon: "linkedin" },
-  { label: "WhatsApp", href: "https://wa.me/8801XXXXXXXXX", icon: "whatsapp" },
+  { label: "WhatsApp", href: whatsappLink(company.contact.whatsapp), icon: "whatsapp" },
 ] as const;

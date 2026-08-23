@@ -9,6 +9,7 @@ import { Icon } from "@/components/icons/Icon";
 import { FAQSection } from "@/components/home/FAQSection";
 import { company } from "@/data/company";
 import { buildMetadata } from "@/lib/seo";
+import { whatsappLink } from "@/lib/utils";
 import type { IconName } from "@/types";
 import { getLocale } from "@/i18n/getLocale";
 import { getPagesDictionary } from "@/i18n/dictionaries/pages";
@@ -35,7 +36,7 @@ export default async function SupportPage() {
 
   const channels = [
     { id: "call", title: t.channels.call.title, description: company.contact.phone, href: `tel:${company.contact.phone.replace(/[^\d+]/g, "")}` },
-    { id: "whatsapp", title: t.channels.whatsapp.title, description: t.channels.whatsapp.description, href: `https://wa.me/${company.contact.whatsapp.replace(/[^\d]/g, "")}` },
+    { id: "whatsapp", title: t.channels.whatsapp.title, description: t.channels.whatsapp.description, href: whatsappLink(company.contact.whatsapp) },
     { id: "login", title: t.channels.login.title, description: t.channels.login.description, href: company.customerPortalUrl },
     { id: "email", title: t.channels.email.title, description: company.contact.supportEmail, href: `mailto:${company.contact.supportEmail}` },
   ];

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { company } from "@/data/company";
 import { getHomeDictionary } from "@/i18n/dictionaries/home";
 import { getCommonDictionary } from "@/i18n/dictionaries/common";
+import { whatsappLink } from "@/lib/utils";
 import type { Locale } from "@/i18n/config";
 
 export function SupportCTA({ locale }: { locale: Locale }) {
@@ -23,7 +24,7 @@ export function SupportCTA({ locale }: { locale: Locale }) {
             <Button href={`tel:${company.contact.phone.replace(/[^\d+]/g, "")}`} size="lg" icon>
               {buttons.callSupport}
             </Button>
-            <Button href={`https://wa.me/${company.contact.whatsapp.replace(/[^\d]/g, "")}`} variant="secondary" size="lg">
+            <Button href={whatsappLink(company.contact.whatsapp)} variant="secondary" size="lg">
               {buttons.whatsapp}
             </Button>
             <Button href={company.customerPortalUrl} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
