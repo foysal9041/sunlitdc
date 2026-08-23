@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/icons/Icon";
+import { BrandIcon } from "@/components/icons/BrandIcon";
 import { FAQSection } from "@/components/home/FAQSection";
 import { company } from "@/data/company";
 import { buildMetadata } from "@/lib/seo";
@@ -54,11 +55,15 @@ export default async function SupportPage() {
                   href={channel.href}
                   target={channel.href.startsWith("http") ? "_blank" : undefined}
                   rel={channel.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group flex h-full flex-col items-center rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-300 hover:shadow-lg"
+                  className="group flex h-full flex-col items-center rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-300 hover:shadow-lg"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-electric-500/15 to-cyan-400/15 text-electric-600 dark:text-cyan-300">
-                    <Icon name={CHANNEL_ICONS[channel.id]} className="h-6 w-6" />
-                  </div>
+                  {channel.id === "whatsapp" ? (
+                    <BrandIcon name="whatsapp" className="h-12 w-12" />
+                  ) : (
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-electric-50 text-electric-600 dark:bg-electric-500/15 dark:text-cyan-300">
+                      <Icon name={CHANNEL_ICONS[channel.id]} className="h-6 w-6" />
+                    </div>
+                  )}
                   <h3 className="mt-4 text-base font-bold text-navy-950 dark:text-white">{channel.title}</h3>
                   <p className="mt-1.5 text-sm text-slate-500 dark:text-slate-400">{channel.description}</p>
                 </a>
@@ -73,13 +78,13 @@ export default async function SupportPage() {
         </Container>
       </section>
 
-      <section id="payment" className="scroll-mt-24 bg-mist-50 dark:bg-navy-950 py-24">
+      <section id="payment" className="scroll-mt-24 bg-mist-50 dark:bg-navy-950 py-12 sm:py-[72px]">
         <Container>
           <SectionHeading eyebrow={t.billingEyebrow} title={t.billingTitle} subtitle={t.billingSubtitle} />
           <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {t.paymentMethods.map((method, i) => (
               <ScrollReveal key={method.id} delay={i * 90}>
-                <div className="h-full rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-6 shadow-sm">
+                <div className="h-full rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-6 shadow-sm">
                   <h3 className="text-base font-bold text-navy-950 dark:text-white">{method.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{method.description}</p>
                   {method.id === "mfs" && (
@@ -95,9 +100,9 @@ export default async function SupportPage() {
         </Container>
       </section>
 
-      <section className="bg-white dark:bg-navy-900 py-24">
+      <section className="bg-white dark:bg-navy-900 py-12 sm:py-[72px]">
         <Container>
-          <ScrollReveal className="mx-auto max-w-2xl rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-10 text-center shadow-sm">
+          <ScrollReveal className="mx-auto max-w-2xl rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-10 text-center shadow-sm">
             <h2 className="text-2xl font-bold text-navy-950 dark:text-white">{t.stillNeedHelpTitle}</h2>
             <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
               {t.stillNeedHelpSubtitle}

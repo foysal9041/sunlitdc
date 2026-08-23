@@ -10,7 +10,7 @@ export function NetworkArchitecture({ locale }: { locale: Locale }) {
   const networkLayers = getNetworkLayers(locale);
 
   return (
-    <section className="relative overflow-hidden bg-mist-100 dark:bg-navy-950 py-24">
+    <section className="relative overflow-hidden border-t border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 py-12 sm:py-[72px]">
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       <Container className="relative">
         <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
@@ -25,7 +25,7 @@ export function NetworkArchitecture({ locale }: { locale: Locale }) {
           <ol className="grid grid-cols-1 gap-5 lg:grid-cols-6 lg:gap-4">
             {networkLayers.map((layer, i) => (
               <ScrollReveal key={layer.id} delay={i * 90}>
-                <li className="relative flex h-full flex-col items-center rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-5 text-center shadow-sm">
+                <li className="relative flex h-full flex-col items-center rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-5 text-center shadow-sm">
                   <span
                     className="absolute right-3 top-3 h-2 w-2 animate-led-blink rounded-full bg-emerald-400 text-emerald-400"
                     style={{ animationDelay: `${i * 0.4}s` }}
@@ -45,7 +45,7 @@ export function NetworkArchitecture({ locale }: { locale: Locale }) {
           </ol>
         </div>
 
-        <ScrollReveal delay={200} className="mt-16 overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 py-6 shadow-sm">
+        <ScrollReveal delay={200} className="mt-16 overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card py-6 shadow-sm">
           <div className="no-scrollbar flex w-max animate-marquee gap-3 px-6">
             {[...techBadges, ...techBadges].map((badge, i) => (
               <span

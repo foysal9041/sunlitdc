@@ -42,7 +42,7 @@ export function AvailabilityForm({ locale }: { locale: Locale }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-6 shadow-sm sm:p-8">
+    <form onSubmit={handleSubmit} className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-6 shadow-sm sm:p-8">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-300">{t.district}</span>

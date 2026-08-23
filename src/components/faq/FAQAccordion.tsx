@@ -9,7 +9,7 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
   const [openId, setOpenId] = useState<string | null>(items[0]?.id ?? null);
 
   return (
-    <div className="divide-y divide-slate-200 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 shadow-sm">
+    <div className="divide-y divide-slate-200 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card shadow-sm">
       {items.map((item) => {
         const isOpen = openId === item.id;
         return (

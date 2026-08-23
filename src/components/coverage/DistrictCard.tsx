@@ -23,7 +23,7 @@ export function DistrictCard({
   const t = getPagesDictionary(locale).coverage;
 
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300 hover:shadow-xl">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300 hover:shadow-xl">
       <div className="h-1.5 w-full bg-linear-to-r from-electric-500 to-cyan-400" />
 
       <div className="flex flex-1 flex-col p-6">
@@ -39,8 +39,8 @@ export function DistrictCard({
           </div>
         </div>
 
-        <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-700">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+        <span className="status-pill status-pill--online mt-3 w-fit px-2.5 py-0.5 text-xs">
+          <span className="h-1.5 w-1.5 rounded-full bg-current" />
           {t.active}
         </span>
 

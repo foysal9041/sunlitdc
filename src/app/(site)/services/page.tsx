@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/icons/Icon";
+import { SERVICE_ICON_MOTION } from "@/components/services/ServiceCard";
 import { getServices } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -39,8 +40,14 @@ export default async function ServicesPage() {
                   i % 2 === 1 ? "bg-mist-50 dark:bg-navy-950" : "bg-white dark:bg-navy-900"
                 )}
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-electric-500/15 to-cyan-400/15 text-electric-600 dark:text-cyan-300">
-                  <Icon name={service.icon} className="h-8 w-8" />
+                <div className="relative flex h-16 w-16 items-center justify-center">
+                  <span
+                    className="absolute inset-0 animate-pulse-slow rounded-2xl bg-linear-to-br from-electric-500/30 to-cyan-400/30 blur-md"
+                    aria-hidden="true"
+                  />
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-electric-50 text-electric-600 dark:bg-electric-500/15 dark:text-cyan-300">
+                    <Icon name={service.icon} strokeWidth={2.4} className={cn("h-8 w-8", SERVICE_ICON_MOTION[service.id])} />
+                  </div>
                 </div>
 
                 <div>

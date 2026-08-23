@@ -34,8 +34,8 @@ export default async function ContactPage() {
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <ScrollReveal className="space-y-4">
             {infoCards.map((card) => (
-              <div key={card.title} className="flex items-start gap-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-6 shadow-sm">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-electric-500/15 to-cyan-400/15 text-electric-600 dark:text-cyan-300">
+              <div key={card.title} className="flex items-start gap-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-6 shadow-sm">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-electric-50 text-electric-600 dark:bg-electric-500/15 dark:text-cyan-300">
                   <Icon name={card.icon} className="h-5 w-5" />
                 </div>
                 <div>

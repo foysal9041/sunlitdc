@@ -12,11 +12,11 @@ export function PartnersSection({ locale }: { locale: Locale }) {
   const loop = [...partners, ...partners];
 
   return (
-    <section className="bg-mist-50 dark:bg-navy-950 py-20">
+    <section className="border-t border-slate-200 dark:border-white/10 bg-mist-50 dark:bg-navy-950 py-12 sm:py-[72px]">
       <Container>
         <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
 
-        <ScrollReveal delay={100} className="relative mt-12 overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 py-8 shadow-sm">
+        <ScrollReveal delay={100} className="relative mt-12 overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card py-8 shadow-sm">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-linear-to-r from-white to-transparent sm:w-28 dark:from-navy-900" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-white to-transparent sm:w-28 dark:from-navy-900" />
 

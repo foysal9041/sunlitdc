@@ -41,7 +41,7 @@ const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('sunlit_th
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale();
   return (
-    <html lang={locale} className={`${jakarta.variable} ${bengali.variable}`} data-scroll-behavior="smooth">
+    <html lang={locale} className={`${jakarta.variable} ${bengali.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>

@@ -12,9 +12,9 @@ export function SupportCTA({ locale }: { locale: Locale }) {
   const buttons = getCommonDictionary(locale).buttons;
 
   return (
-    <section className="bg-mist-50 dark:bg-navy-950 py-24">
+    <section id="support" className="scroll-mt-24 border-t border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 py-12 sm:py-[72px]">
       <Container>
-        <ScrollReveal className="mx-auto max-w-3xl rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-10 text-center shadow-sm sm:p-14">
+        <ScrollReveal className="mx-auto max-w-3xl rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-10 text-center shadow-sm sm:p-14">
           <h2 className="text-3xl font-extrabold tracking-tight text-navy-950 dark:text-white sm:text-4xl">{t.title}</h2>
           <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
             {t.subtitle}

@@ -46,7 +46,7 @@ export default async function BillPaymentPage() {
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {bkashSteps.map((step, i) => (
               <ScrollReveal key={step.step} delay={(i % 3) * 90}>
-                <div className="flex h-full flex-col rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300 hover:shadow-md">
+                <div className="flex h-full flex-col rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300 hover:shadow-md">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-electric-500 to-cyan-400 text-sm font-bold text-navy-950 dark:text-white">
                     {step.step}
                   </span>
@@ -100,7 +100,7 @@ export default async function BillPaymentPage() {
             </ScrollReveal>
           </div>
 
-          <ScrollReveal delay={150} className="mt-16 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-8 text-center shadow-sm sm:p-10">
+          <ScrollReveal delay={150} className="mt-16 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-8 text-center shadow-sm sm:p-10">
             <h2 className="text-xl font-bold text-navy-950 dark:text-white">{t.needHelpTitle}</h2>
             <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{t.needHelpSubtitle}</p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">

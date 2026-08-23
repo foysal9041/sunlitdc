@@ -53,19 +53,19 @@ export default async function CoveragePage() {
           </ScrollReveal>
 
           <ScrollReveal delay={100} className="mt-10 grid grid-cols-3 gap-4 sm:max-w-md">
-            <div className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-4 text-center shadow-sm">
+            <div className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-4 text-center shadow-sm">
               <p className="text-2xl font-extrabold text-navy-950 dark:text-white sm:text-3xl">
                 <StatCounter value={coverage.totals.activeAreas} suffix="+" />
               </p>
               <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t.activeCoverageAreas}</p>
             </div>
-            <div className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-4 text-center shadow-sm">
+            <div className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-4 text-center shadow-sm">
               <p className="text-2xl font-extrabold text-navy-950 dark:text-white sm:text-3xl">
                 <StatCounter value={coverage.totals.districts} />
               </p>
               <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t.districtsCovered}</p>
             </div>
-            <div className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-4 text-center shadow-sm">
+            <div className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 surface-card p-4 text-center shadow-sm">
               <p className="text-2xl font-extrabold text-emerald-600 sm:text-3xl">{t.active}</p>
               <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t.networkStatus}</p>
             </div>
@@ -105,7 +105,7 @@ export default async function CoveragePage() {
               const icons = ["signal", "headset", "gauge", "shield", "mapPin"] as const;
               return (
                 <div key={item.title} className="flex flex-col items-center gap-2 text-center sm:flex-row sm:items-start sm:text-left">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-electric-500/15 to-cyan-400/15 text-electric-600 dark:text-cyan-300">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-electric-50 text-electric-600 dark:bg-electric-500/15 dark:text-cyan-300">
                     <Icon name={icons[i]} className="h-4 w-4" />
                   </div>
                   <div>

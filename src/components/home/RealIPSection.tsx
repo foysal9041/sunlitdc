@@ -11,7 +11,7 @@ export function RealIPSection({ locale }: { locale: Locale }) {
   const buttons = getCommonDictionary(locale).buttons;
 
   return (
-    <section className="bg-white dark:bg-navy-900 py-24">
+    <section className="border-t border-slate-200 dark:border-white/10 bg-mist-50 dark:bg-navy-950 py-12 sm:py-[72px]">
       <Container>
         <ScrollReveal className="relative overflow-hidden rounded-3xl border border-electric-400/20 bg-linear-to-br from-electric-600/15 via-navy-800 to-navy-900 p-10 sm:p-14">
           <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-cyan-400/15 blur-[100px]" />

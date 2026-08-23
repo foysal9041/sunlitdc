@@ -14,7 +14,7 @@ export async function CoverageSection({ locale }: { locale: Locale }) {
   const buttons = getCommonDictionary(locale).buttons;
 
   return (
-    <section id="coverage" className="scroll-mt-24 bg-white dark:bg-navy-900 py-24">
+    <section id="coverage" className="scroll-mt-24 border-t border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 py-12 sm:py-[72px]">
       <Container className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
         <ScrollReveal>
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 dark:border-cyan-400/25 bg-cyan-50 dark:bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-electric-600 dark:text-cyan-300">
@@ -55,8 +55,8 @@ export async function CoverageSection({ locale }: { locale: Locale }) {
             <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{t.districtsCovered}</p>
           </div>
           <div className="col-span-2 rounded-3xl border border-slate-200 dark:border-white/10 bg-mist-50 dark:bg-navy-950 p-6 text-center shadow-sm">
-            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-600">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="status-pill status-pill--online px-3 py-1 text-sm">
+              <span className="h-2 w-2 rounded-full bg-current" />
               {t.networkActive}
             </span>
           </div>

@@ -3,31 +3,33 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
+  --background: #f7f9fc;
   --foreground: #0a1130;
 
-  --color-navy-950: #04060f;
-  --color-navy-900: #070c1e;
-  --color-navy-800: #0d1530;
-  --color-navy-700: #142145;
-  --color-navy-600: #1c2e5c;
-  --color-navy-500: #273f78;
+  --color-navy-950: #111a2e;
+  --color-navy-900: #17223b;
+  --color-navy-800: #1e2c4a;
+  --color-navy-700: #283a5e;
+  --color-navy-600: #344c78;
+  --color-navy-500: #46609a;
 
   --color-electric-600: #1245d6;
   --color-electric-500: #2f63ff;
   --color-electric-400: #5c85ff;
   --color-electric-300: #93aeff;
+  --color-electric-100: #dde6ff;
+  --color-electric-50: #eef2ff;
 
   --color-cyan-400: #1fc9dd;
   --color-cyan-300: #5adbe9;
   --color-cyan-200: #a7ecf3;
 
-  --color-mist-50: #f8fafc;
-  --color-mist-100: #f1f5f9;
+  --color-mist-50: #f7f9fc;
+  --color-mist-100: #eef2f7;
 }
 
 .dark {
-  --background: #070c1e;
+  --background: #111a2e;
   --foreground: #f4f7fc;
 }
 
@@ -46,6 +48,8 @@
   --color-electric-500: var(--color-electric-500);
   --color-electric-400: var(--color-electric-400);
   --color-electric-300: var(--color-electric-300);
+  --color-electric-100: var(--color-electric-100);
+  --color-electric-50: var(--color-electric-50);
 
   --color-cyan-400: var(--color-cyan-400);
   --color-cyan-300: var(--color-cyan-300);
@@ -65,6 +69,10 @@
   --animate-radar-spin: radar-spin 6s linear infinite;
   --animate-travel-down: travel-down 2.2s ease-in-out infinite;
   --animate-icon-wobble: icon-wobble 3.4s ease-in-out infinite;
+  --animate-icon-pulse: icon-pulse 2.2s ease-in-out infinite;
+  --animate-icon-bounce: icon-bounce 2.6s ease-in-out infinite;
+  --animate-icon-spin-slow: icon-spin-slow 5s linear infinite;
+  --animate-icon-flicker: icon-flicker 2.8s ease-in-out infinite;
 }
 
 * {
@@ -119,7 +127,7 @@ body {
 }
 
 .dark .glass {
-  background: color-mix(in srgb, #0d1530 72%, transparent);
+  background: color-mix(in srgb, #1e2c4a 72%, transparent);
   border: 1px solid color-mix(in srgb, white 10%, transparent);
 }
 
@@ -196,10 +204,112 @@ body {
   50% { transform: rotate(8deg); }
 }
 
+/* Small-amplitude motion tuned for glyph-sized icons (contained within a
+   fixed chip) rather than the larger hero/pill elements above. */
+@keyframes icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.16); }
+}
+
+@keyframes icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes icon-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* A quick double-blink like a live signal/status flicker. */
+@keyframes icon-flicker {
+  0%, 46%, 54%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ---------------------------------------------------------------------
+   Visual-hierarchy primitives (light mode only): every important card/
+   KPI/status element uses one of these so the page reads in clear
+   layers — page background -> section -> card -> inner content ->
+   icon/badge. Scoped to html:not(.dark) so they never fight the
+   dark:bg-navy-900 / dark:border-white/10 Tailwind utilities already
+   sitting on the same elements for dark mode.
+   ------------------------------------------------------------------- */
+html:not(.dark) .surface-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+html:not(.dark) .surface-card:hover {
+  transform: translateY(-2px);
+  border-color: #bfdbfe;
+  box-shadow: 0 8px 24px rgba(23, 105, 224, 0.1);
+}
+
+html:not(.dark) .surface-card--featured {
+  border: 1px solid #93c5fd;
+  box-shadow: 0 6px 20px rgba(23, 105, 224, 0.12);
+}
+
+html:not(.dark) .kpi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border-width: 1px;
+  border-style: solid;
+  font-weight: 700;
+}
+
+html:not(.dark) .status-pill--online {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #16a34a;
+}
+
+html:not(.dark) .status-pill--warning {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #f59e0b;
+}
+
+html:not(.dark) .status-pill--offline {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.dark .status-pill--online {
+  background: color-mix(in srgb, #16a34a 15%, transparent);
+  border-color: color-mix(in srgb, #16a34a 35%, transparent);
+  color: #4ade80;
+}
+
+.dark .status-pill--warning {
+  background: color-mix(in srgb, #f59e0b 15%, transparent);
+  border-color: color-mix(in srgb, #f59e0b 35%, transparent);
+  color: #fbbf24;
+}
+
+.dark .status-pill--offline {
+  background: color-mix(in srgb, #dc2626 15%, transparent);
+  border-color: color-mix(in srgb, #dc2626 35%, transparent);
+  color: #f87171;
 }

@@ -13,7 +13,7 @@ export function ServicesGrid({ locale }: { locale: Locale }) {
   const services = getServices(locale);
 
   return (
-    <section className="bg-white dark:bg-navy-900 py-24">
+    <section id="services" className="scroll-mt-24 border-t border-slate-200 dark:border-white/10 bg-mist-50 dark:bg-navy-950 py-12 sm:py-[72px]">
       <Container>
         <SectionHeading eyebrow={t.eyebrow} title={t.title} subtitle={t.subtitle} />
 

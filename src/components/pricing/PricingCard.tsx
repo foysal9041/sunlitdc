@@ -5,16 +5,28 @@ import { Icon } from "@/components/icons/Icon";
 import { cn, formatBDT } from "@/lib/utils";
 import { getCommonDictionary } from "@/i18n/dictionaries/common";
 
+// Each non-popular package gets its own accent color so the lineup reads as
+// distinct tiers at a glance, not six identical gray cards. The "popular"
+// package keeps its own dedicated blue/cyan featured treatment instead.
+const PACKAGE_ACCENTS: Record<string, { border: string; text: string }> = {
+  "basic-35": { border: "border-violet-300 dark:border-violet-400/40", text: "text-violet-600 dark:text-violet-300" },
+  "premium-60": { border: "border-cyan-300 dark:border-cyan-400/40", text: "text-cyan-700 dark:text-cyan-300" },
+  "pro-70": { border: "border-emerald-300 dark:border-emerald-400/40", text: "text-emerald-600 dark:text-emerald-300" },
+  "ultimate-80": { border: "border-amber-300 dark:border-amber-400/40", text: "text-amber-600 dark:text-amber-300" },
+  "ultra-110": { border: "border-rose-300 dark:border-rose-400/40", text: "text-rose-600 dark:text-rose-300" },
+};
+
 export function PricingCard({ pkg, locale }: { pkg: InternetPackage; locale: Locale }) {
   const t = getCommonDictionary(locale);
+  const accent = PACKAGE_ACCENTS[pkg.id];
 
   return (
     <div
       className={cn(
-        "relative flex h-full flex-col rounded-3xl border p-7 transition-all duration-300 hover:-translate-y-2",
+        "surface-card relative flex h-full flex-col rounded-3xl border-2 p-7",
         pkg.popular
-          ? "border-cyan-300 bg-linear-to-b from-cyan-50 via-white to-white shadow-[0_20px_45px_-20px_rgba(47,99,255,0.35)] dark:border-cyan-400/40 dark:from-navy-800 dark:via-navy-900 dark:to-navy-900"
-          : "border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 shadow-sm hover:border-electric-300 hover:shadow-md"
+          ? "surface-card--featured border-blue-300 bg-linear-to-b from-cyan-50 via-white to-white dark:border-cyan-400/40 dark:from-navy-800 dark:via-navy-900 dark:to-navy-900"
+          : cn("bg-white dark:bg-navy-900", accent?.border ?? "border-slate-200 dark:border-white/10")
       )}
     >
       {pkg.popular && (
@@ -25,7 +37,9 @@ export function PricingCard({ pkg, locale }: { pkg: InternetPackage; locale: Loc
 
       <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{pkg.tagline}</p>
       <div className="mt-3 flex items-end gap-2">
-        <span className="text-4xl font-extrabold text-navy-950 dark:text-white">{pkg.speedMbps}</span>
+        <span className={cn("text-4xl font-extrabold", pkg.popular ? "text-navy-950 dark:text-white" : (accent?.text ?? "text-navy-950 dark:text-white"))}>
+          {pkg.speedMbps}
+        </span>
         <span className="pb-1 text-lg font-semibold text-slate-500 dark:text-slate-400">{t.misc.mbps}</span>
       </div>
 

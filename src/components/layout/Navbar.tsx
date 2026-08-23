@@ -13,16 +13,29 @@ import { getCommonDictionary } from "@/i18n/dictionaries/common";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
+// Maps homepage <section id> anchors to the nav link they correspond to, so
+// the matching nav item highlights as that section scrolls into view — even
+// though the link itself navigates to a separate dedicated page.
+const SECTION_TO_HREF: Record<string, string> = {
+  packages: "/internet",
+  business: "/business",
+  services: "/services",
+  coverage: "/coverage",
+  support: "/support",
+};
+
 export function Navbar({ locale }: { locale: Locale }) {
   const t = getCommonDictionary(locale);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const pathname = usePathname();
   const [lastPathname, setLastPathname] = useState(pathname);
 
   if (pathname !== lastPathname) {
     setLastPathname(pathname);
     setOpen(false);
+    if (pathname !== "/") setActiveSection(null);
   }
 
   useEffect(() => {
@@ -39,6 +52,36 @@ export function Navbar({ locale }: { locale: Locale }) {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const ids = Object.keys(SECTION_TO_HREF);
+    const elements = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => el !== null);
+    if (elements.length === 0) return;
+
+    const HERO_THRESHOLD = 400;
+    const onScroll = () => {
+      if (window.scrollY < HERO_THRESHOLD) setActiveSection(null);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && window.scrollY >= HERO_THRESHOLD) {
+            setActiveSection(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
+    );
+    elements.forEach((el) => observer.observe(el));
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [pathname]);
+
   const navLinks = [
     { label: t.nav.home, href: "/" },
     { label: t.nav.internet, href: "/internet" },
@@ -48,6 +91,8 @@ export function Navbar({ locale }: { locale: Locale }) {
     { label: t.nav.billPayment, href: "/bill-payment" },
     { label: t.nav.support, href: "/support" },
   ];
+
+  const activeHref = pathname === "/" && activeSection ? SECTION_TO_HREF[activeSection] : pathname === "/" ? "/" : pathname;
 
   return (
     <header
@@ -63,7 +108,7 @@ export function Navbar({ locale }: { locale: Locale }) {
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
           {navLinks.map((link) => {
-            const active = pathname === link.href;
+            const active = activeHref === link.href;
             return (
               <Link
                 key={link.href}
@@ -120,7 +165,7 @@ export function Navbar({ locale }: { locale: Locale }) {
                 href={link.href}
                 className={cn(
                   "rounded-2xl px-4 py-3 text-base font-medium transition-colors",
-                  pathname === link.href
+                  activeHref === link.href
                     ? "bg-slate-100 text-navy-950 dark:bg-white/10 dark:text-white"
                     : "text-slate-600 hover:bg-slate-50 hover:text-navy-950 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
                 )}

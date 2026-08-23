@@ -6,6 +6,16 @@ import { getBusinessFeatures } from "@/data/stats";
 import { getHomeDictionary } from "@/i18n/dictionaries/home";
 import { getCommonDictionary } from "@/i18n/dictionaries/common";
 import type { Locale } from "@/i18n/config";
+import { cn } from "@/lib/utils";
+
+export const BUSINESS_ICON_MOTION: Record<string, string> = {
+  dedicated: "animate-icon-flicker",
+  "real-ip": "animate-icon-spin-slow",
+  ha: "animate-icon-pulse",
+  latency: "animate-icon-wobble",
+  support: "animate-icon-bounce",
+  scalable: "animate-icon-pulse",
+};
 
 export function BusinessTeaser({ locale }: { locale: Locale }) {
   const t = getHomeDictionary(locale).business;
@@ -13,17 +23,18 @@ export function BusinessTeaser({ locale }: { locale: Locale }) {
   const businessFeatures = getBusinessFeatures(locale);
 
   return (
-    <section className="relative overflow-hidden bg-mist-50 dark:bg-navy-950 py-24">
-      <div className="pointer-events-none absolute right-0 top-0 h-[420px] w-[420px] rounded-full bg-cyan-200/22 blur-[130px]" />
+    <section id="business" className="scroll-mt-24 relative overflow-hidden bg-navy-950 py-12 sm:py-[72px]">
+      <div className="pointer-events-none absolute right-0 top-0 h-[420px] w-[420px] rounded-full bg-cyan-400/15 blur-[130px]" />
+      <div className="bg-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       <Container className="relative grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
         <ScrollReveal>
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 dark:border-cyan-400/25 bg-white dark:bg-navy-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-electric-600 dark:text-cyan-300">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-300">
             {t.eyebrow}
           </span>
-          <h2 className="text-3xl font-extrabold tracking-tight text-navy-950 dark:text-white sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             {t.title}
           </h2>
-          <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-600 dark:text-slate-300">
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-300">
             {t.description}
           </p>
           <Button href="/business" size="lg" className="mt-8" icon>
@@ -33,10 +44,14 @@ export function BusinessTeaser({ locale }: { locale: Locale }) {
 
         <ScrollReveal delay={120} className="grid grid-cols-2 gap-4">
           {businessFeatures.map((feature) => (
-            <div key={feature.id} className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-5 shadow-sm">
-              <Icon name={feature.icon} className="h-5 w-5 text-electric-600 dark:text-cyan-300" />
-              <p className="mt-3 text-sm font-semibold text-navy-950 dark:text-white">{feature.title}</p>
-              <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">{feature.description}</p>
+            <div key={feature.id} className="group rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition-colors duration-300 hover:border-cyan-400/30">
+              <Icon
+                name={feature.icon}
+                strokeWidth={2.2}
+                className={cn("h-6 w-6 text-cyan-300", BUSINESS_ICON_MOTION[feature.id])}
+              />
+              <p className="mt-3 text-sm font-semibold text-white">{feature.title}</p>
+              <p className="mt-1 text-xs leading-relaxed text-slate-400">{feature.description}</p>
             </div>
           ))}
         </ScrollReveal>
