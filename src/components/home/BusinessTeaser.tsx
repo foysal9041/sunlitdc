@@ -44,14 +44,19 @@ export function BusinessTeaser({ locale }: { locale: Locale }) {
 
         <ScrollReveal delay={120} className="grid grid-cols-2 gap-4">
           {businessFeatures.map((feature) => (
-            <div key={feature.id} className="group rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition-colors duration-300 hover:border-cyan-400/30">
+            <div key={feature.id} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30">
+              <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-cyan-400/20 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div
+                className="pointer-events-none absolute inset-0 -translate-x-[150%] skew-x-[-20deg] bg-linear-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[150%]"
+                aria-hidden="true"
+              />
               <Icon
                 name={feature.icon}
                 strokeWidth={2.2}
-                className={cn("h-6 w-6 text-cyan-300", BUSINESS_ICON_MOTION[feature.id])}
+                className={cn("relative h-6 w-6 text-cyan-300", BUSINESS_ICON_MOTION[feature.id])}
               />
-              <p className="mt-3 text-sm font-semibold text-white">{feature.title}</p>
-              <p className="mt-1 text-xs leading-relaxed text-slate-400">{feature.description}</p>
+              <p className="relative mt-3 text-sm font-semibold text-white">{feature.title}</p>
+              <p className="relative mt-1 text-xs leading-relaxed text-slate-400">{feature.description}</p>
             </div>
           ))}
         </ScrollReveal>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
+import { QuickActions } from "@/components/home/QuickActions";
 import { StatsSection } from "@/components/home/StatsSection";
 import { PricingSection } from "@/components/home/PricingSection";
 import { ExperienceSection } from "@/components/home/ExperienceSection";
@@ -35,6 +36,7 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }}
       />
       <Hero locale={locale} />
+      <QuickActions locale={locale} />
       <StatsSection locale={locale} />
       <PricingSection locale={locale} />
       <ExperienceSection locale={locale} />

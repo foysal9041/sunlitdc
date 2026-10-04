@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { HeroNetworkVisual } from "@/components/home/HeroNetworkVisual";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Icon } from "@/components/icons/Icon";
+import { getInternetPackages } from "@/data/packages";
 import { getHomeDictionary } from "@/i18n/dictionaries/home";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
@@ -13,6 +14,8 @@ const HERO_BACKGROUND_STYLE: "3d-gradient" | "original" = "3d-gradient";
 
 export function Hero({ locale }: { locale: Locale }) {
   const t = getHomeDictionary(locale).hero;
+  const lowest = Math.min(...getInternetPackages(locale).map((p) => p.priceBDT));
+  const bn = locale === "bn";
 
   return (
     <section
@@ -43,7 +46,7 @@ export function Hero({ locale }: { locale: Locale }) {
           <div className="hero-mesh-rays absolute inset-0" />
           <div className="hero-mesh-noise absolute inset-0" />
           <div
-            className="motion-safe:animate-mesh-drift absolute -top-24 left-[6%] h-[420px] w-[420px] rounded-full bg-sky-300/30 blur-[130px]"
+            className="motion-safe:animate-mesh-drift absolute -top-24 left-[6%] h-[420px] w-[420px] rounded-full bg-cyan-300/30 blur-[130px]"
             style={{ animationDuration: "26s" }}
           />
           <div
@@ -70,7 +73,7 @@ export function Hero({ locale }: { locale: Locale }) {
           </span>
           <h1 className="text-4xl font-extrabold leading-[1.08] tracking-tight text-navy-950 dark:text-white sm:text-5xl lg:text-[3.75rem]">
             {t.titleLine1}{" "}
-            <span className="text-gradient drop-shadow-[0_2px_24px_rgba(47,99,255,0.25)]">
+            <span className="text-gradient drop-shadow-[0_2px_24px_rgba(13,156,196,0.25)]">
               {t.titleHighlight} {t.titleLine2}
             </span>
           </h1>
@@ -90,7 +93,21 @@ export function Hero({ locale }: { locale: Locale }) {
             </Button>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-2.5">
+          <div className="mt-8 inline-flex items-center gap-3 rounded-2xl border border-sun-300/60 bg-white/80 px-4 py-2.5 shadow-sm backdrop-blur dark:border-sun-400/30 dark:bg-white/5">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-sun-400 to-sun-500 text-navy-950 shadow-sm">
+              <Icon name="bolt" className="h-5 w-5" />
+            </span>
+            <span className="text-sm leading-tight text-slate-600 dark:text-slate-300">
+              {bn ? "মাসিক মাত্র" : "Starting at just"}{" "}
+              <strong className="text-lg font-extrabold text-navy-950 dark:text-white">৳{lowest}</strong>
+              <span className="text-slate-500 dark:text-slate-400"> {bn ? "/মাস" : "/month"}</span>
+              <span className="block text-xs font-semibold text-sun-600 dark:text-sun-400">
+                {bn ? "ফ্রি ইনস্টলেশন · আনলিমিটেড ডাটা" : "Free installation · Unlimited data"}
+              </span>
+            </span>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center gap-2.5">
             {[t.trust1, t.trust2, t.trust3].map((label) => (
               <span
                 key={label}

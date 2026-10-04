@@ -102,7 +102,7 @@ export function Navbar({ locale }: { locale: Locale }) {
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
-        <Link href="/" className="shrink-0 drop-shadow-[0_1px_6px_rgba(47,99,255,0.18)]" aria-label="Sunlit Network home">
+        <Link href="/" className="shrink-0 drop-shadow-[0_1px_6px_rgba(13,156,196,0.18)]" aria-label="Sunlit Network home">
           <Logo priority className="h-12 sm:h-14" />
         </Link>
 

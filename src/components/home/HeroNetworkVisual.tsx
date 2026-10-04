@@ -1,169 +1,113 @@
 import Image from "next/image";
-import type { Locale } from "@/i18n/config";
+import { Icon } from "@/components/icons/Icon";
+import { getInternetPackages } from "@/data/packages";
 import { getHomeDictionary } from "@/i18n/dictionaries/home";
+import { getCommonDictionary } from "@/i18n/dictionaries/common";
+import type { Locale } from "@/i18n/config";
+import type { IconName } from "@/types";
 
-interface PillNode {
-  id: string;
-  label: string;
-  x: number;
-  y: number;
-  emphasis?: boolean;
-}
-
-const pills: PillNode[] = [
-  { id: "fiber", label: "Fiber Network", x: 50, y: 8 },
-  { id: "smart-home", label: "Smart Home", x: 23, y: 21 },
-  { id: "monitoring", label: "24/7 Monitoring", x: 77, y: 21 },
-  { id: "secure", label: "Secure Network", x: 13, y: 50 },
-  { id: "business", label: "Business Internet", x: 87, y: 50 },
-  { id: "real-ip", label: "Real IP", x: 23, y: 79 },
-  { id: "bdix", label: "BDIX Access", x: 77, y: 79 },
-  { id: "core", label: "Network Core", x: 50, y: 95, emphasis: true },
+const services: { id: "fiber" | "real-ip" | "bdix" | "monitoring"; icon: IconName }[] = [
+  { id: "fiber", icon: "network" },
+  { id: "real-ip", icon: "globe" },
+  { id: "bdix", icon: "server" },
+  { id: "monitoring", icon: "activity" },
 ];
-
-// Direct links between select nodes, layered on top of the center spokes —
-// Fiber, Secure and Business Internet form their own small connected mesh.
-const meshLinks: [string, string][] = [
-  ["fiber", "secure"],
-  ["fiber", "business"],
-  ["secure", "business"],
-];
-
-function findPill(id: string) {
-  return pills.find((p) => p.id === id)!;
-}
 
 export function HeroNetworkVisual({ locale }: { locale: Locale }) {
-  const pillLabels = getHomeDictionary(locale).hero.pills;
+  const bn = locale === "bn";
+  const pills = getHomeDictionary(locale).hero.pills;
+  const misc = getCommonDictionary(locale).misc;
+  const packages = getInternetPackages(locale);
+  const max = Math.max(...packages.map((p) => p.speedMbps));
 
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[600px] py-6">
-      <div className="pointer-events-none absolute inset-0 rounded-full bg-electric-500/10 blur-[100px]" />
-      <div className="pointer-events-none absolute inset-8 rounded-full bg-cyan-400/10 blur-[80px]" />
+    <div className="relative mx-auto w-full max-w-[520px] px-2 py-10 sm:px-6">
+      {/* Orbit rings + soft glow behind the dashboard */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
+        <div className="absolute h-[92%] w-[92%] rounded-full bg-electric-500/10 blur-[90px] dark:bg-electric-500/20" />
+        <div className="absolute aspect-square w-[108%] rounded-full border border-dashed border-electric-400/30 motion-safe:animate-radar-spin" style={{ animationDuration: "60s" }} />
+        <div className="absolute aspect-square w-[84%] rounded-full border border-cyan-400/25 motion-safe:animate-radar-spin" style={{ animationDuration: "42s", animationDirection: "reverse" }} />
+        <span className="absolute left-[2%] top-[38%] h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_14px_3px_rgba(23,224,192,0.7)] motion-safe:animate-pulse-slow" />
+        <span className="absolute bottom-[14%] right-[4%] h-2 w-2 rounded-full bg-electric-500 shadow-[0_0_12px_3px_rgba(13,156,196,0.6)] motion-safe:animate-pulse-slow" style={{ animationDelay: "-1.4s" }} />
+      </div>
 
-      <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full overflow-visible">
-        <defs>
-          <linearGradient id="heroLine" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#34e3f2" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#2f63ff" stopOpacity="0.25" />
-          </linearGradient>
-        </defs>
-
-        <circle cx="50" cy="50" r="44" fill="none" stroke="#0a1130" strokeOpacity="0.07" />
-        <circle cx="50" cy="50" r="32" fill="none" stroke="#0a1130" strokeOpacity="0.07" />
-        <circle cx="50" cy="50" r="20" fill="none" stroke="#0a1130" strokeOpacity="0.08" />
-
-        {pills.map((pill, i) =>
-          pill.emphasis ? (
-            <line
-              key={pill.id}
-              x1="50"
-              y1="50"
-              x2={pill.x}
-              y2={pill.y}
-              stroke="#2f63ff"
-              strokeOpacity="0.55"
-              strokeWidth={0.6}
-            />
-          ) : (
-            <line
-              key={pill.id}
-              x1="50"
-              y1="50"
-              x2={pill.x}
-              y2={pill.y}
-              stroke="url(#heroLine)"
-              strokeWidth={0.35}
-              strokeDasharray="1.6 1.8"
-              strokeDashoffset={30}
-              className="animate-dash"
-              style={{ animationDelay: `${i * 0.18}s`, animationDuration: "4s" }}
-            />
-          )
-        )}
-
-        {/* Direct mesh links between Fiber, Secure and Business Internet —
-            a small interconnected triangle layered over the center spokes. */}
-        {meshLinks.map(([a, b], i) => {
-          const from = findPill(a);
-          const to = findPill(b);
-          return (
-            <line
-              key={`mesh-${a}-${b}`}
-              x1={from.x}
-              y1={from.y}
-              x2={to.x}
-              y2={to.y}
-              stroke="#5c85ff"
-              strokeOpacity="0.3"
-              strokeWidth={0.3}
-              strokeDasharray="1.2 1.6"
-              strokeDashoffset={20}
-              className="animate-dash"
-              style={{ animationDelay: `${i * 0.3}s`, animationDuration: "3.6s" }}
-            />
-          );
-        })}
-        {meshLinks.map(([a, b], i) => {
-          const from = findPill(a);
-          const to = findPill(b);
-          return (
-            <circle key={`mesh-pulse-${a}-${b}`} r={0.8} fill="#5c85ff" style={{ filter: "drop-shadow(0 0 2px #5c85ff)" }}>
-              <animateMotion
-                path={`M ${from.x} ${from.y} L ${to.x} ${to.y}`}
-                dur="2.8s"
-                begin={`${i * 0.5}s`}
-                repeatCount="indefinite"
-              />
-            </circle>
-          );
-        })}
-
-        {/* Traveling light pulses — data flowing outward through fiber, like the
-            reference site's animated links, on every connection including the core. */}
-        {pills.map((pill, i) => (
-          <circle
-            key={`pulse-${pill.id}`}
-            r={pill.emphasis ? 1.5 : 1}
-            fill={pill.emphasis ? "#7cedf5" : "#34e3f2"}
-            style={{ filter: "drop-shadow(0 0 2.5px #7cedf5)" }}
-          >
-            <animateMotion
-              path={`M 50 50 L ${pill.x} ${pill.y}`}
-              dur={pill.emphasis ? "1.6s" : "2.4s"}
-              begin={`${i * 0.28}s`}
-              repeatCount="indefinite"
-            />
-          </circle>
-        ))}
-      </svg>
-
-      {pills.map((pill, i) => (
-        <div
-          key={pill.id}
-          className="absolute -translate-x-1/2 -translate-y-1/2 animate-float"
-          style={{ left: `${pill.x}%`, top: `${pill.y}%`, animationDelay: `${i * 0.35}s`, animationDuration: "5.5s" }}
-        >
-          <span className="glass whitespace-nowrap rounded-full px-2 py-1 text-[10px] font-semibold text-navy-950 dark:text-white shadow-sm sm:px-3.5 sm:py-1.5 sm:text-xs">
-            {pillLabels[pill.id as keyof typeof pillLabels] ?? pill.label}
+      {/* Main dashboard card */}
+      <div className="relative rounded-3xl border border-white/70 bg-white/80 p-5 shadow-[0_30px_80px_-24px_rgba(23,60,160,0.35)] backdrop-blur-xl dark:border-white/10 dark:bg-navy-800/80 sm:p-6">
+        <div className="flex items-center justify-between">
+          <Image src="/logo.png" alt="Sunlit Network" width={512} height={199} className="h-9 w-auto object-contain" priority />
+          <span className="status-pill status-pill--online px-2.5 py-1 text-[11px]">
+            <span className="h-1.5 w-1.5 rounded-full bg-current motion-safe:animate-led-blink" aria-hidden="true" />
+            {bn ? "নেটওয়ার্ক সচল" : "Network Online"}
           </span>
         </div>
-      ))}
 
-      <div className="absolute left-1/2 top-1/2 w-36 -translate-x-1/2 -translate-y-1/2 sm:w-44">
-        <div className="glass relative flex items-center justify-center rounded-2xl px-5 py-4 shadow-[0_0_50px_-12px_rgba(47,99,255,0.45)]">
-          <span
-            className="absolute -right-1 -top-1 h-3 w-3 animate-led-blink rounded-full bg-emerald-400 text-emerald-400"
-            aria-hidden="true"
-          />
-          <Image
-            src="/logo.png"
-            alt="Sunlit Network"
-            width={512}
-            height={199}
-            className="h-auto w-full object-contain"
-            priority
-          />
+        <div className="mt-6 flex items-end justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              {bn ? "স্পিড ও প্যাকেজ" : "Speed & Plans"}
+            </p>
+            <p className="mt-1 text-4xl font-extrabold tracking-tight text-navy-950 dark:text-white">
+              <span className="mr-1.5 text-sm font-semibold text-slate-500 dark:text-slate-400">{bn ? "সর্বোচ্চ" : "Up to"}</span>
+              <span className="text-gradient">{bn ? "১১০" : max}</span>{" "}
+              <span className="text-base font-semibold text-slate-500 dark:text-slate-400">{misc.mbps}</span>
+            </p>
+          </div>
+        </div>
+
+        <ul className="mt-4 space-y-2" aria-label={bn ? "প্যাকেজ স্পিড" : "Package speeds"}>
+          {packages.map((p, i) => (
+            <li key={p.id} className="flex items-center gap-3">
+              <span className="w-[4.5rem] shrink-0 whitespace-nowrap text-xs font-semibold tabular-nums text-slate-500 dark:text-slate-400">
+                {p.speedMbps} {misc.mbps}
+              </span>
+              <span className="h-2 flex-1 overflow-hidden rounded-full bg-slate-200/70 dark:bg-white/10">
+                <span
+                  className="block h-full origin-left rounded-full bg-linear-to-r from-electric-500 to-cyan-400 motion-safe:animate-bar-grow"
+                  style={{ width: `${(p.speedMbps / max) * 100}%`, animationDelay: `${0.4 + i * 0.12}s` }}
+                />
+              </span>
+              <span className="w-12 shrink-0 text-right text-xs font-bold text-navy-950 dark:text-white">৳{p.priceBDT}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-5 grid grid-cols-2 gap-2.5 border-t border-slate-200/80 pt-5 dark:border-white/10">
+          {services.map((s) => (
+            <div
+              key={s.id}
+              className="flex items-center gap-2.5 rounded-xl border border-slate-200/70 bg-white/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/5"
+            >
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-electric-50 text-electric-600 dark:bg-electric-500/15 dark:text-cyan-300">
+                <Icon name={s.icon} className="h-4 w-4" />
+              </span>
+              <span className="text-xs font-semibold leading-tight text-navy-950 dark:text-white">{pills[s.id]}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Floating accent cards */}
+      <div className="absolute -right-1 top-3 motion-safe:animate-float sm:right-0" style={{ animationDuration: "6.5s" }}>
+        <div className="flex items-center gap-2.5 rounded-2xl border border-white/70 bg-white/90 px-3.5 py-2.5 shadow-[0_16px_40px_-14px_rgba(23,60,160,0.4)] backdrop-blur dark:border-white/10 dark:bg-navy-800/90">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-300">
+            <Icon name="shield" className="h-5 w-5" />
+          </span>
+          <span className="leading-tight">
+            <span className="block text-base font-extrabold text-navy-950 dark:text-white">{bn ? "৯৯.৯%" : "99.9%"}</span>
+            <span className="block text-[11px] text-slate-500 dark:text-slate-400">{bn ? "নির্ভরযোগ্যতা" : "Reliability"}</span>
+          </span>
+        </div>
+      </div>
+
+      <div className="absolute -left-1 -bottom-1 motion-safe:animate-float sm:left-0" style={{ animationDuration: "7.5s", animationDelay: "-2s" }}>
+        <div className="flex items-center gap-2.5 rounded-2xl border border-sun-300/60 bg-white/90 px-3.5 py-2.5 shadow-[0_16px_40px_-14px_rgba(255,159,26,0.45)] backdrop-blur dark:border-sun-400/30 dark:bg-navy-800/90">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-sun-400 to-sun-500 text-navy-950">
+            <Icon name="headset" className="h-5 w-5" />
+          </span>
+          <span className="leading-tight">
+            <span className="block text-base font-extrabold text-navy-950 dark:text-white">{bn ? "২৪/৭" : "24/7"}</span>
+            <span className="block text-[11px] text-slate-500 dark:text-slate-400">{bn ? "সাপোর্ট" : "Support"}</span>
+          </span>
         </div>
       </div>
     </div>

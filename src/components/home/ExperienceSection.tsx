@@ -30,6 +30,11 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
             <ScrollReveal key={item.id} delay={(i % 3) * 90}>
               <div className="surface-card group relative h-full overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-navy-900 p-7">
                 <span className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-electric-500 to-cyan-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true" />
+                <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-electric-500/10 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div
+                  className="pointer-events-none absolute inset-0 -translate-x-[150%] skew-x-[-20deg] bg-linear-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[150%]"
+                  aria-hidden="true"
+                />
                 <div className="relative flex h-14 w-14 items-center justify-center">
                   <span
                     className="absolute inset-0 animate-pulse-slow rounded-2xl bg-linear-to-br from-electric-500/30 to-cyan-400/30 blur-md"
@@ -45,8 +50,8 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
                     />
                   </div>
                 </div>
-                <h3 className="mt-5 text-lg font-bold text-navy-950 dark:text-white">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.description}</p>
+                <h3 className="relative mt-5 text-lg font-bold text-navy-950 dark:text-white">{item.title}</h3>
+                <p className="relative mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.description}</p>
               </div>
             </ScrollReveal>
           ))}

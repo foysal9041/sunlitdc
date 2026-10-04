@@ -21,7 +21,7 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "linear-gradient(135deg, #04060f 0%, #0d1530 55%, #142145 100%)",
+          background: "linear-gradient(135deg, #041a28 0%, #07263a 55%, #10405c 100%)",
           fontFamily: "sans-serif",
         }}
       >
@@ -31,7 +31,7 @@ export default function Image() {
         <div style={{ display: "flex", marginTop: 56, fontSize: 62, fontWeight: 800, color: "white", maxWidth: 900, lineHeight: 1.1 }}>
           Internet That Moves With You.
         </div>
-        <div style={{ display: "flex", marginTop: 28, fontSize: 26, color: "#b7c1e0", maxWidth: 820 }}>
+        <div style={{ display: "flex", marginTop: 28, fontSize: 26, color: "#b7d9e6", maxWidth: 820 }}>
           {company.description}
         </div>
       </div>
