@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { CardSpotlight } from "@/components/layout/CardSpotlight";
 import { SiteLoader } from "@/components/layout/SiteLoader";
 import { FloatingActions } from "@/components/layout/FloatingActions";
 import { organizationJsonLd } from "@/lib/seo";
@@ -15,6 +16,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
       />
       <SiteLoader />
+      <CardSpotlight />
       <Navbar locale={locale} />
       <main>{children}</main>
       <Footer locale={locale} />

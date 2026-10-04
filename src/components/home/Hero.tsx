@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { FiberCanvas } from "@/components/home/FiberCanvas";
 import { HeroNetworkVisual } from "@/components/home/HeroNetworkVisual";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Icon } from "@/components/icons/Icon";
@@ -62,29 +63,31 @@ export function Hero({ locale }: { locale: Locale }) {
         </div>
       )}
 
+      <FiberCanvas className="pointer-events-none absolute inset-0 h-full w-full opacity-80 [mask-image:linear-gradient(to_bottom,black_55%,transparent)]" />
+
       <Container className="relative grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-        <ScrollReveal>
-          <span className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-cyan-200 dark:border-cyan-400/25 bg-white dark:bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-electric-600 dark:text-cyan-300 shadow-sm">
+        <div>
+          <span className="rise mb-6 inline-flex items-center gap-2.5 rounded-full border border-cyan-200 dark:border-cyan-400/25 bg-white dark:bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-electric-600 dark:text-cyan-300 shadow-sm">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-pulse-slow rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
             {t.badge}
           </span>
-          <h1 className="text-4xl font-extrabold leading-[1.08] tracking-tight text-navy-950 dark:text-white sm:text-5xl lg:text-[3.75rem]">
+          <h1 style={{ "--rise-delay": "0.12s" } as React.CSSProperties} className="rise text-4xl font-extrabold leading-[1.08] tracking-tight text-navy-950 dark:text-white sm:text-5xl lg:text-[3.75rem]">
             {t.titleLine1}{" "}
             <span className="text-gradient drop-shadow-[0_2px_24px_rgba(13,156,196,0.25)]">
               {t.titleHighlight} {t.titleLine2}
             </span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+          <p style={{ "--rise-delay": "0.28s" } as React.CSSProperties} className="rise mt-6 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
             {t.subtitle}
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div style={{ "--rise-delay": "0.42s" } as React.CSSProperties} className="rise mt-9 flex flex-col gap-3 sm:flex-row">
             <div className="relative">
-              <span className="absolute inset-0 -z-10 animate-pulse-slow rounded-full bg-electric-500/40 blur-xl" aria-hidden="true" />
-              <Button href="/internet" size="lg" icon className="w-full sm:w-auto">
+              <span className="absolute inset-0 -z-10 animate-pulse-slow rounded-full bg-sun-400/40 blur-xl" aria-hidden="true" />
+              <Button href="/internet" variant="sun" size="lg" icon className="w-full sm:w-auto">
                 {t.ctaPrimary}
               </Button>
             </div>
@@ -93,7 +96,7 @@ export function Hero({ locale }: { locale: Locale }) {
             </Button>
           </div>
 
-          <div className="mt-8 inline-flex items-center gap-3 rounded-2xl border border-sun-300/60 bg-white/80 px-4 py-2.5 shadow-sm backdrop-blur dark:border-sun-400/30 dark:bg-white/5">
+          <div style={{ "--rise-delay": "0.56s" } as React.CSSProperties} className="rise mt-8 inline-flex items-center gap-3 rounded-2xl border border-sun-300/60 bg-white/80 px-4 py-2.5 shadow-sm backdrop-blur dark:border-sun-400/30 dark:bg-white/5">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-sun-400 to-sun-500 text-navy-950 shadow-sm">
               <Icon name="bolt" className="h-5 w-5" />
             </span>
@@ -107,7 +110,7 @@ export function Hero({ locale }: { locale: Locale }) {
             </span>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-2.5">
+          <div style={{ "--rise-delay": "0.7s" } as React.CSSProperties} className="rise mt-6 flex flex-wrap items-center gap-2.5">
             {[t.trust1, t.trust2, t.trust3].map((label) => (
               <span
                 key={label}
@@ -117,7 +120,7 @@ export function Hero({ locale }: { locale: Locale }) {
               </span>
             ))}
           </div>
-        </ScrollReveal>
+        </div>
 
         <ScrollReveal delay={150} className="order-first lg:order-last">
           <HeroNetworkVisual locale={locale} />

@@ -35,6 +35,9 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
                   className="pointer-events-none absolute inset-0 -translate-x-[150%] skew-x-[-20deg] bg-linear-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[150%]"
                   aria-hidden="true"
                 />
+                <span className="pointer-events-none absolute right-5 top-4 select-none text-5xl font-extrabold leading-none text-electric-500/10 transition-colors duration-300 group-hover:text-electric-500/25 dark:text-white/5 dark:group-hover:text-cyan-300/20" aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <div className="relative flex h-14 w-14 items-center justify-center">
                   <span
                     className="absolute inset-0 animate-pulse-slow rounded-2xl bg-linear-to-br from-electric-500/30 to-cyan-400/30 blur-md"

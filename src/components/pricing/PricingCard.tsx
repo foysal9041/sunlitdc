@@ -71,7 +71,7 @@ export function PricingCard({ pkg, locale }: { pkg: InternetPackage; locale: Loc
 
         <Button
           href={`/contact?package=${pkg.id}`}
-          variant={hot ? "primary" : "secondary"}
+          variant={hot ? "sun" : "secondary"}
           icon
           className="mt-6 w-full justify-center"
         >

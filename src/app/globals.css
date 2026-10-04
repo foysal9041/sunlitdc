@@ -545,3 +545,44 @@ html.loader-seen .site-loader {
 @keyframes loader-bar {
   to { transform: translateX(0); }
 }
+
+/* Staggered hero entrance. Hidden only while JS is present and the intro
+   loader is still running, so no-JS visitors still see the content. */
+.rise {
+  animation: rise-in 0.95s var(--bwz-ease, cubic-bezier(0.16, 1, 0.3, 1)) both;
+  animation-delay: var(--rise-delay, 0s);
+}
+
+html.js:not([data-ready]) .rise {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Soft spotlight that follows the cursor across a card (see CardSpotlight). */
+.surface-card {
+  position: relative;
+}
+
+.surface-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(240px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(18, 187, 232, 0.16), transparent 70%);
+  transition: opacity 0.3s ease;
+}
+
+.surface-card:hover::after {
+  opacity: 1;
+}
+
+.dark .surface-card::after {
+  background: radial-gradient(260px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(92, 238, 214, 0.12), transparent 70%);
+}

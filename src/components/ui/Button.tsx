@@ -3,7 +3,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "reac
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/icons/Icon";
 
-type Variant = "primary" | "secondary" | "ghost";
+type Variant = "primary" | "secondary" | "ghost" | "sun";
 type Size = "md" | "lg";
 
 const base =
@@ -12,6 +12,7 @@ const base =
 const variants: Record<Variant, string> = {
   primary:
     "btn-shine bg-linear-to-r from-electric-600 via-electric-500 to-cyan-400 text-white shadow-[0_8px_24px_-8px_rgba(13,156,196,0.55)] hover:shadow-[0_14px_34px_-8px_rgba(23,224,192,0.55)] hover:-translate-y-0.5",
+  sun: "btn-shine bg-linear-to-r from-sun-400 to-sun-500 text-navy-950 shadow-[0_10px_28px_-8px_rgba(255,159,26,0.65)] hover:shadow-[0_16px_36px_-8px_rgba(255,159,26,0.75)] hover:-translate-y-0.5",
   secondary: "glass text-navy-950 hover:border-electric-400/60 hover:-translate-y-0.5 dark:text-white",
   ghost: "text-slate-600 hover:text-navy-950 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/10",
 };

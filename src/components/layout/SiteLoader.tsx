@@ -8,7 +8,7 @@ const SHOW_MS = 2300;
 const FADE_MS = 650;
 
 // Runs before first paint so returning visitors in the same session never see the overlay flash.
-const SKIP_SCRIPT = `try{if(sessionStorage.getItem("${SEEN_KEY}"))document.documentElement.classList.add("loader-seen")}catch(e){}`;
+const SKIP_SCRIPT = `try{if(sessionStorage.getItem("${SEEN_KEY}")){document.documentElement.classList.add("loader-seen");document.documentElement.dataset.ready="1"}}catch(e){}document.documentElement.classList.add("js")`;
 
 export function SiteLoader() {
   const [done, setDone] = useState(false);
@@ -20,7 +20,10 @@ export function SiteLoader() {
     if (root.classList.contains("loader-seen")) return;
     root.style.overflow = "hidden";
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const t1 = window.setTimeout(() => setDone(true), reduce ? 300 : SHOW_MS);
+    const t1 = window.setTimeout(() => {
+      setDone(true);
+      root.dataset.ready = "1";
+    }, reduce ? 300 : SHOW_MS);
     const t2 = window.setTimeout(
       () => {
         setGone(true);
