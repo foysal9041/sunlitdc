@@ -98,7 +98,7 @@ export function Navbar({ locale }: { locale: Locale }) {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled || open ? "glass shadow-lg shadow-slate-900/5" : "bg-transparent"
+        scrolled || open ? "bg-navy-950/90 shadow-lg shadow-slate-900/20 backdrop-blur-xl" : "bg-navy-950"
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
@@ -116,8 +116,8 @@ export function Navbar({ locale }: { locale: Locale }) {
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-medium transition-all duration-200",
                   active
-                    ? "glass text-navy-950 shadow-sm shadow-slate-900/10 dark:text-white"
-                    : "text-slate-600 hover:text-navy-950 dark:text-slate-300 dark:hover:text-white"
+                    ? "bg-white/10 text-white ring-1 ring-white/15"
+                    : "text-slate-300 hover:bg-white/5 hover:text-white"
                 )}
               >
                 {link.label}
@@ -141,7 +141,7 @@ export function Navbar({ locale }: { locale: Locale }) {
           <LanguageSwitcher locale={locale} size="sm" />
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-navy-950 dark:text-white"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white"
             aria-label={open ? t.closeMenu : t.openMenu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
