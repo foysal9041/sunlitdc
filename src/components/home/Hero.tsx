@@ -47,7 +47,7 @@ export function Hero({ locale }: { locale: Locale }) {
           <div className="hero-mesh-rays absolute inset-0" />
           <div className="hero-mesh-noise absolute inset-0" />
           <div
-            className="motion-safe:animate-mesh-drift absolute -top-24 left-[6%] h-[420px] w-[420px] rounded-full bg-cyan-300/30 blur-[130px]"
+            className="motion-safe:animate-mesh-drift absolute -top-24 left-[6%] h-[420px] w-[420px] rounded-full bg-sky-300/30 blur-[130px]"
             style={{ animationDuration: "26s" }}
           />
           <div
@@ -76,7 +76,7 @@ export function Hero({ locale }: { locale: Locale }) {
           </span>
           <h1 style={{ "--rise-delay": "0.12s" } as React.CSSProperties} className="rise text-4xl font-extrabold leading-[1.08] tracking-tight text-navy-950 dark:text-white sm:text-5xl lg:text-[3.75rem]">
             {t.titleLine1}{" "}
-            <span className="text-gradient drop-shadow-[0_2px_24px_rgba(13,156,196,0.25)]">
+            <span className="text-gradient drop-shadow-[0_2px_24px_rgba(47,99,255,0.25)]">
               {t.titleHighlight} {t.titleLine2}
             </span>
           </h1>

@@ -31,7 +31,7 @@ export function CoveragePackagesStrip({ locale }: { locale: Locale }) {
               key={pkg.id}
               className={cn(
                 "surface-card card-edge relative w-40 shrink-0 snap-start rounded-2xl border bg-white dark:bg-navy-900 p-4 text-center sm:w-auto",
-                pkg.popular ? "surface-card--featured border-electric-400 shadow-[0_0_30px_-10px_rgba(13,156,196,0.45)]" : "border-slate-200 dark:border-white/10"
+                pkg.popular ? "surface-card--featured border-electric-400 shadow-[0_0_30px_-10px_rgba(47,99,255,0.45)]" : "border-slate-200 dark:border-white/10"
               )}
             >
               {pkg.popular && (

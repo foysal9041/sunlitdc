@@ -66,8 +66,8 @@ export function FiberCanvas({ className }: { className?: string }) {
 
     const draw = (now: number) => {
       const dark = document.documentElement.classList.contains("dark");
-      const line = dark ? "92,238,214" : "13,156,196";
-      const dot = dark ? "166,245,232" : "13,156,196";
+      const line = dark ? "90,219,233" : "47,99,255";
+      const dot = dark ? "167,236,243" : "47,99,255";
 
       ctx.clearRect(0, 0, w, h);
 
@@ -127,7 +127,7 @@ export function FiberCanvas({ className }: { className?: string }) {
           const B = nodes[p.b];
           const x = A.x + (B.x - A.x) * p.t;
           const y = A.y + (B.y - A.y) * p.t;
-          const rgb = p.warm ? "255,185,56" : dark ? "92,238,214" : "18,187,232";
+          const rgb = p.warm ? "255,185,56" : dark ? "90,219,233" : "47,99,255";
           const g = ctx.createRadialGradient(x, y, 0, x, y, 11);
           g.addColorStop(0, `rgba(${rgb},0.95)`);
           g.addColorStop(1, `rgba(${rgb},0)`);

@@ -50,7 +50,7 @@ export function Footer({ locale }: { locale: Locale }) {
       <Container className="relative py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Logo className="h-16 drop-shadow-[0_1px_8px_rgba(13,156,196,0.2)] sm:h-20" />
+            <Logo className="h-16 drop-shadow-[0_1px_8px_rgba(47,99,255,0.2)] sm:h-20" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">{t.positioning}</p>
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map((social) => (

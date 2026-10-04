@@ -3,32 +3,29 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f7fafc;
-  --foreground: #0a2e44;
+  --background: #f7f9fc;
+  --foreground: #0a1130;
 
-  --color-navy-950: #07263a;
-  --color-navy-900: #0a2e44;
-  --color-navy-800: #10405c;
-  --color-navy-700: #14506f;
-  --color-navy-600: #1b6590;
-  --color-navy-500: #2b7fa8;
+  --color-navy-950: #111a2e;
+  --color-navy-900: #17223b;
+  --color-navy-800: #1e2c4a;
+  --color-navy-700: #283a5e;
+  --color-navy-600: #344c78;
+  --color-navy-500: #46609a;
 
-  --color-electric-600: #0a6e8c;
-  --color-electric-500: #0d9cc4;
-  --color-electric-400: #12bbe8;
-  --color-electric-300: #7fdcf3;
-  --color-electric-100: #cfeef8;
-  --color-electric-50: #eaf9fd;
+  --color-electric-600: #1245d6;
+  --color-electric-500: #2f63ff;
+  --color-electric-400: #5c85ff;
+  --color-electric-300: #93aeff;
+  --color-electric-100: #dde6ff;
+  --color-electric-50: #eef2ff;
 
-  --color-cyan-400: #17e0c0;
-  --color-cyan-300: #5ceed6;
-  --color-cyan-200: #a6f5e8;
+  --color-cyan-400: #1fc9dd;
+  --color-cyan-300: #5adbe9;
+  --color-cyan-200: #a7ecf3;
 
-  --color-mist-50: #f7fafc;
-  --color-mist-100: #eef4f7;
-
-  --color-cyan-50: #eaf9fd;
-  --color-cyan-100: #cfeef8;
+  --color-mist-50: #f7f9fc;
+  --color-mist-100: #eef2f7;
 
   --color-sun-300: #ffd37a;
   --color-sun-400: #ffb938;
@@ -37,7 +34,7 @@
 }
 
 .dark {
-  --background: #07263a;
+  --background: #111a2e;
   --foreground: #f4f7fc;
 }
 
@@ -65,9 +62,6 @@
 
   --color-mist-50: var(--color-mist-50);
   --color-mist-100: var(--color-mist-100);
-
-  --color-cyan-50: var(--color-cyan-50);
-  --color-cyan-100: var(--color-cyan-100);
 
   --color-sun-300: var(--color-sun-300);
   --color-sun-400: var(--color-sun-400);
@@ -143,16 +137,16 @@ body {
   background: color-mix(in srgb, white 78%, transparent);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid color-mix(in srgb, #0a2e44 8%, transparent);
+  border: 1px solid color-mix(in srgb, #0a1130 8%, transparent);
 }
 
 .dark .glass {
-  background: color-mix(in srgb, #10405c 72%, transparent);
+  background: color-mix(in srgb, #1e2c4a 72%, transparent);
   border: 1px solid color-mix(in srgb, white 10%, transparent);
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #0fc9ab, #12bbe8, #2e7df7, #12bbe8, #0fc9ab);
+  background: linear-gradient(90deg, #1245d6, #1fc9dd, #2f63ff, #1245d6);
   background-size: 250% 100%;
   animation: gradient-pan 8s ease-in-out infinite;
   -webkit-background-clip: text;
@@ -162,8 +156,8 @@ body {
 
 .bg-grid {
   background-image:
-    linear-gradient(color-mix(in srgb, #0a2e44 5%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, #0a2e44 5%, transparent) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, #0a1130 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, #0a1130 5%, transparent) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
@@ -178,10 +172,10 @@ body {
    dark:bg-navy-900 fill used everywhere else in dark mode. */
 html:not(.dark) .hero-mesh-bg {
   background:
-    radial-gradient(1200px 640px at 84% 16%, color-mix(in srgb, #d8f3fb 65%, transparent) 0%, transparent 62%),
-    radial-gradient(900px 620px at 10% 84%, color-mix(in srgb, #dbeefb 55%, transparent) 0%, transparent 65%),
-    radial-gradient(760px 520px at 48% -4%, color-mix(in srgb, #eaf9fd 55%, transparent) 0%, transparent 60%),
-    linear-gradient(165deg, #ffffff 0%, #f6fcfe 40%, #eef7fb 75%, #e8f3f9 100%);
+    radial-gradient(1200px 640px at 84% 16%, color-mix(in srgb, #d6f7ff 65%, transparent) 0%, transparent 62%),
+    radial-gradient(900px 620px at 10% 84%, color-mix(in srgb, #dbeeff 55%, transparent) 0%, transparent 65%),
+    radial-gradient(760px 520px at 48% -4%, color-mix(in srgb, #eafcff 55%, transparent) 0%, transparent 60%),
+    linear-gradient(165deg, #ffffff 0%, #f6fdff 40%, #eef8fb 75%, #eaf5fa 100%);
 }
 
 html:not(.dark) .hero-mesh-rays {
@@ -191,7 +185,7 @@ html:not(.dark) .hero-mesh-rays {
     color-mix(in srgb, #ffffff 55%, transparent) 6deg,
     transparent 18deg,
     transparent 38deg,
-    color-mix(in srgb, #bfeaf8 45%, transparent) 46deg,
+    color-mix(in srgb, #bff0ff 45%, transparent) 46deg,
     transparent 58deg,
     transparent 96deg,
     color-mix(in srgb, #ffffff 40%, transparent) 104deg,
@@ -318,13 +312,13 @@ html:not(.dark) .surface-card {
 
 html:not(.dark) .surface-card:hover {
   transform: translateY(-4px);
-  border-color: #cfeef8;
-  box-shadow: 0 2px 4px rgba(13, 156, 196, 0.05), 0 20px 40px -16px rgba(13, 156, 196, 0.28);
+  border-color: #bfdbfe;
+  box-shadow: 0 2px 4px rgba(23, 105, 224, 0.05), 0 20px 40px -16px rgba(23, 105, 224, 0.28);
 }
 
 html:not(.dark) .surface-card--featured {
-  border: 1px solid #7fdcf3;
-  box-shadow: 0 6px 20px rgba(13, 156, 196, 0.12);
+  border: 1px solid #93c5fd;
+  box-shadow: 0 6px 20px rgba(23, 105, 224, 0.12);
 }
 
 html:not(.dark) .kpi-card {
@@ -463,7 +457,7 @@ html.loader-seen .site-loader {
   justify-content: center;
   gap: 26px;
   background:
-    radial-gradient(700px 420px at 50% 40%, #eaf9fd 0%, transparent 70%),
+    radial-gradient(700px 420px at 50% 40%, #eef2ff 0%, transparent 70%),
     #ffffff;
   transition: opacity 0.65s ease, visibility 0.65s ease;
 }
@@ -491,7 +485,7 @@ html.loader-seen .site-loader {
   stroke-dasharray: 420;
   stroke-dashoffset: 420;
   animation: loader-draw 1.7s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
-  filter: drop-shadow(0 0 8px rgba(18, 187, 232, 0.65));
+  filter: drop-shadow(0 0 8px rgba(47, 99, 255, 0.65));
 }
 
 .site-loader__node {
@@ -517,7 +511,7 @@ html.loader-seen .site-loader {
   height: 3px;
   overflow: hidden;
   border-radius: 999px;
-  background: #cfeef8;
+  background: #dde6ff;
 }
 
 .site-loader__bar::after {
@@ -525,7 +519,7 @@ html.loader-seen .site-loader {
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, #17e0c0, #12bbe8, #2e7df7);
+  background: linear-gradient(90deg, #1fc9dd, #5c85ff, #2f63ff);
   animation: loader-bar 2.2s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
 }
 
@@ -575,7 +569,7 @@ html.js:not([data-ready]) .rise {
   border-radius: inherit;
   pointer-events: none;
   opacity: 0;
-  background: radial-gradient(240px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(18, 187, 232, 0.16), transparent 70%);
+  background: radial-gradient(240px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(47, 99, 255, 0.16), transparent 70%);
   transition: opacity 0.3s ease;
 }
 
@@ -584,5 +578,5 @@ html.js:not([data-ready]) .rise {
 }
 
 .dark .surface-card::after {
-  background: radial-gradient(260px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(92, 238, 214, 0.12), transparent 70%);
+  background: radial-gradient(260px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(90, 219, 233, 0.12), transparent 70%);
 }

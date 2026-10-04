@@ -54,9 +54,9 @@ export function SiteLoader() {
         <svg className="site-loader__path" viewBox="0 0 240 90" aria-hidden="true" focusable="false">
           <defs>
             <linearGradient id="loaderFlow" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#17e0c0" />
-              <stop offset="55%" stopColor="#12bbe8" />
-              <stop offset="100%" stopColor="#2e7df7" />
+              <stop offset="0%" stopColor="#1fc9dd" />
+              <stop offset="55%" stopColor="#5c85ff" />
+              <stop offset="100%" stopColor="#2f63ff" />
             </linearGradient>
           </defs>
           <path
@@ -80,8 +80,8 @@ export function SiteLoader() {
               cx={cx}
               cy={cy}
               r={r}
-              fill={r === 6 ? "#12bbe8" : "#fff"}
-              stroke="#12bbe8"
+              fill={r === 6 ? "#5c85ff" : "#fff"}
+              stroke="#5c85ff"
               strokeWidth="1.5"
               style={{ animationDelay: `${delay}s` }}
             />

@@ -27,8 +27,8 @@ export function HeroNetworkVisual({ locale }: { locale: Locale }) {
         <div className="absolute h-[92%] w-[92%] rounded-full bg-electric-500/10 blur-[90px] dark:bg-electric-500/20" />
         <div className="absolute aspect-square w-[108%] rounded-full border border-dashed border-electric-400/30 motion-safe:animate-radar-spin" style={{ animationDuration: "60s" }} />
         <div className="absolute aspect-square w-[84%] rounded-full border border-cyan-400/25 motion-safe:animate-radar-spin" style={{ animationDuration: "42s", animationDirection: "reverse" }} />
-        <span className="absolute left-[2%] top-[38%] h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_14px_3px_rgba(23,224,192,0.7)] motion-safe:animate-pulse-slow" />
-        <span className="absolute bottom-[14%] right-[4%] h-2 w-2 rounded-full bg-electric-500 shadow-[0_0_12px_3px_rgba(13,156,196,0.6)] motion-safe:animate-pulse-slow" style={{ animationDelay: "-1.4s" }} />
+        <span className="absolute left-[2%] top-[38%] h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_14px_3px_rgba(31,201,221,0.7)] motion-safe:animate-pulse-slow" />
+        <span className="absolute bottom-[14%] right-[4%] h-2 w-2 rounded-full bg-electric-500 shadow-[0_0_12px_3px_rgba(47,99,255,0.6)] motion-safe:animate-pulse-slow" style={{ animationDelay: "-1.4s" }} />
       </div>
 
       {/* Main dashboard card */}

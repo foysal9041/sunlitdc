@@ -52,7 +52,7 @@ export function CoverageOrbit({ districts, locale }: { districts: PublicDistrict
           className="absolute inset-0 animate-radar-spin"
           style={{
             background:
-              "conic-gradient(from 0deg, rgba(18,187,232,0.28) 0deg, rgba(18,187,232,0) 55deg, transparent 360deg)",
+              "conic-gradient(from 0deg, rgba(47,99,255,0.28) 0deg, rgba(47,99,255,0) 55deg, transparent 360deg)",
           }}
         />
       </div>
@@ -60,21 +60,21 @@ export function CoverageOrbit({ districts, locale }: { districts: PublicDistrict
       <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
         <defs>
           <linearGradient id="orbitLine" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#17e0c0" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#0d9cc4" stopOpacity="0.15" />
+            <stop offset="0%" stopColor="#1fc9dd" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#2f63ff" stopOpacity="0.15" />
           </linearGradient>
         </defs>
 
         {/* Abstract region silhouette — a stylised map outline, not a literal one */}
         <path
           d="M18 34 C 9 44, 10 57, 19 66 C 14 79, 23 91, 40 93 C 57 96, 74 89, 82 75 C 92 70, 93 54, 85 44 C 91 30, 80 16, 62 13 C 46 7, 26 11, 18 24 Z"
-          fill="rgba(13,156,196,0.06)"
-          stroke="rgba(13,156,196,0.3)"
+          fill="rgba(47,99,255,0.06)"
+          stroke="rgba(47,99,255,0.3)"
           strokeWidth={0.5}
         />
 
-        <circle cx="50" cy="50" r="44" fill="none" stroke="#0a2e44" strokeOpacity="0.07" />
-        <circle cx="50" cy="50" r="22" fill="none" stroke="#0a2e44" strokeOpacity="0.08" />
+        <circle cx="50" cy="50" r="44" fill="none" stroke="#0a1130" strokeOpacity="0.07" />
+        <circle cx="50" cy="50" r="22" fill="none" stroke="#0a1130" strokeOpacity="0.08" />
 
         {positions.map(({ x, y, d }, i) => (
           <line
@@ -94,7 +94,7 @@ export function CoverageOrbit({ districts, locale }: { districts: PublicDistrict
 
         {/* Traveling light pulses — data flowing out to every district, on every line */}
         {positions.map(({ x, y, d }, i) => (
-          <circle key={`pulse-${d.district}`} r={1} fill="#0d9cc4" style={{ filter: "drop-shadow(0 0 2.5px #0d9cc4)" }}>
+          <circle key={`pulse-${d.district}`} r={1} fill="#2f63ff" style={{ filter: "drop-shadow(0 0 2.5px #2f63ff)" }}>
             <animateMotion path={`M 50 50 L ${x} ${y}`} dur="2.4s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
           </circle>
         ))}
@@ -107,7 +107,7 @@ export function CoverageOrbit({ districts, locale }: { districts: PublicDistrict
         <span className="absolute inset-0 animate-ripple rounded-full border border-electric-400/50" style={{ animationDelay: "2s" }} />
       </div>
 
-      <div className="glass absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-cyan-300/40 p-3 shadow-[0_0_60px_-10px_rgba(18,187,232,0.4)] sm:h-28 sm:w-28">
+      <div className="glass absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-cyan-300/40 p-3 shadow-[0_0_60px_-10px_rgba(47,99,255,0.4)] sm:h-28 sm:w-28">
         <Image src="/logo.png" alt="Sunlit Network" width={512} height={199} className="h-auto w-full object-contain" priority />
       </div>
 

@@ -14,10 +14,10 @@ export function PricingCard({ pkg, locale }: { pkg: InternetPackage; locale: Loc
       className={cn(
         "surface-card card-edge relative flex h-full flex-col rounded-3xl border p-7",
         hot
-          ? "border-electric-500/60 bg-linear-to-b from-navy-800 to-navy-950 text-white shadow-[0_24px_60px_-20px_rgba(13,156,196,0.55)] lg:-translate-y-2"
+          ? "border-electric-500/60 bg-linear-to-b from-navy-800 to-navy-950 text-white shadow-[0_24px_60px_-20px_rgba(47,99,255,0.55)] lg:-translate-y-2"
           : "bg-white dark:bg-navy-900"
       )}
-      style={hot ? { background: "linear-gradient(160deg, #10405c 0%, #07263a 100%)" } : undefined}
+      style={hot ? { background: "linear-gradient(160deg, #1e2c4a 0%, #111a2e 100%)" } : undefined}
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl" aria-hidden="true">
         <div className="bg-grid absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]" />
